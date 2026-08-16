@@ -1,14 +1,12 @@
 {
   "name": "portfoli-website",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "Shivendra Gupta - Full-Stack Java Developer Portfolio",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Shivendra Gupta",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
