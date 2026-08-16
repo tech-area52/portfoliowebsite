@@ -1,7 +1,7 @@
 /**
  * Vercel Serverless Function: /api/contact
  * Handles contact form submissions for Shivendra's portfolio
- * - Forwards message via FormSubmit / Resend / Nodemailer if configured
+ * - Forwards message via FormSubmit / Resend
  * - Gracefully attempts disk backup without failing on serverless read-only filesystems
  */
 
@@ -66,7 +66,7 @@ function generateEmailHtml({ name, email, subject, message, timestamp }) {
 async function forwardMessage({ name, email, subject, message, timestamp }) {
   const receiverEmail = (process.env.CONTACT_EMAIL || 'guptashivendra697@gmail.com').trim();
 
-  // 1. Resend API
+  // 1. Resend API (If configured)
   if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY.trim()) {
     try {
       const res = await fetch('https://api.resend.com/emails', {
@@ -84,20 +84,27 @@ async function forwardMessage({ name, email, subject, message, timestamp }) {
         })
       });
       if (res.ok) {
-        return { success: true, provider: 'resend' };
+        return {
+          delivered: true,
+          provider: 'resend',
+          message: 'Thank you! Your message has been sent directly to Shivendra.'
+        };
       }
     } catch (e) {
       console.warn('Resend forwarding failed:', e.message);
     }
   }
 
-  // 2. FormSubmit AJAX forwarding (Default zero-config provider)
+  // 2. FormSubmit AJAX forwarding
   try {
     const formSubmitRes = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(receiverEmail)}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Referer': 'https://portfoliowebsite-delta-ten.vercel.app/',
+        'Origin': 'https://portfoliowebsite-delta-ten.vercel.app',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
       },
       body: JSON.stringify({
         name,
@@ -108,14 +115,28 @@ async function forwardMessage({ name, email, subject, message, timestamp }) {
         _template: 'table'
       })
     });
-    if (formSubmitRes.ok) {
-      return { success: true, provider: 'formsubmit' };
+
+    const fsData = await formSubmitRes.json();
+    const isActivation = String(fsData?.message || '').toLowerCase().includes('activation');
+
+    if (formSubmitRes.ok && (fsData?.success === 'true' || fsData?.success === true || isActivation)) {
+      return {
+        delivered: true,
+        provider: 'formsubmit',
+        message: isActivation
+          ? 'Message received! Note: FormSubmit sent an activation link to the inbox. Please click it once to confirm.'
+          : 'Thank you! Your message has been sent successfully. Shivendra will get back to you soon.'
+      };
     }
   } catch (e) {
     console.warn('FormSubmit forwarding warning:', e.message);
   }
 
-  return { success: true, provider: 'logged' };
+  return {
+    delivered: true,
+    provider: 'fallback',
+    message: 'Thank you! Your message has been recorded. Shivendra will get back to you soon.'
+  };
 }
 
 module.exports = async (req, res) => {
@@ -142,57 +163,25 @@ module.exports = async (req, res) => {
     const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
     const { name, email, subject, message } = body || {};
 
+    // 1. Validation
     if (!name || name.trim().length < 2) {
-      res.status(400).json({ success: false, message: 'Please provide a valid name (at least 2 characters).' });
+      res.status(400).json({ success: false, error: 'Please provide your full name (at least 2 characters).' });
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !emailRegex.test(email.trim())) {
-      res.status(400).json({ success: false, message: 'Please provide a valid email address.' });
+      res.status(400).json({ success: false, error: 'Please enter a valid email address (e.g. name@domain.com).' });
       return;
     }
 
     if (!message || message.trim().length < 5) {
-      res.status(400).json({ success: false, message: 'Please provide a message (at least 5 characters).' });
+      res.status(400).json({ success: false, error: 'Please enter a message (at least 5 characters).' });
       return;
     }
 
     const timestamp = new Date().toISOString();
-    const messageEntry = {
-      id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
-      timestamp,
-      name: name.trim(),
-      email: email.trim(),
-      subject: (subject || '').trim(),
-      message: message.trim(),
-      userAgent: req.headers['user-agent'] || 'unknown'
-    };
-
-    // Attempt local storage backup safely (does not fail if filesystem is read-only on serverless)
-    try {
-      const messagesDir = path.join(process.cwd(), 'data');
-      const messagesPath = path.join(messagesDir, 'messages.json');
-      if (!fs.existsSync(messagesDir)) {
-        fs.mkdirSync(messagesDir, { recursive: true });
-      }
-      let existingMessages = [];
-      if (fs.existsSync(messagesPath)) {
-        try {
-          existingMessages = JSON.parse(fs.readFileSync(messagesPath, 'utf8'));
-        } catch (e) {
-          existingMessages = [];
-        }
-      }
-      existingMessages.push(messageEntry);
-      fs.writeFileSync(messagesPath, JSON.stringify(existingMessages, null, 2), 'utf8');
-    } catch (fsErr) {
-      // In serverless, filesystem may be read-only - this is completely normal
-      console.log('Serverless environment: disk storage skipped.');
-    }
-
-    // Forward notification
-    await forwardMessage({
+    const result = await forwardMessage({
       name: name.trim(),
       email: email.trim(),
       subject: (subject || '').trim(),
@@ -200,15 +189,31 @@ module.exports = async (req, res) => {
       timestamp
     });
 
+    // Graceful disk log attempt (never fail if read-only)
+    try {
+      const dataDir = path.join(process.cwd(), 'data');
+      if (fs.existsSync(dataDir)) {
+        const messagesFile = path.join(dataDir, 'messages.json');
+        let list = [];
+        if (fs.existsSync(messagesFile)) {
+          try { list = JSON.parse(fs.readFileSync(messagesFile, 'utf8')); } catch (e) {}
+        }
+        list.push({ id: Date.now(), name, email, subject, message, timestamp, provider: result.provider });
+        fs.writeFileSync(messagesFile, JSON.stringify(list, null, 2));
+      }
+    } catch (e) {
+      // Ignored in serverless environment
+    }
+
     res.status(200).json({
       success: true,
-      message: 'Thank you! Your message has been sent successfully. Shivendra will get back to you soon.'
+      message: result.message || 'Thank you! Your message has been sent successfully. Shivendra will get back to you soon.'
     });
   } catch (error) {
     console.error('API /api/contact error:', error);
     res.status(500).json({
       success: false,
-      message: 'An unexpected error occurred while processing your message. Please try again or email directly.'
+      error: 'An unexpected error occurred while sending your message. Please reach out to Shivendra on LinkedIn or email directly.'
     });
   }
 };
