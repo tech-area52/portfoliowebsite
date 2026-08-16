@@ -1,6 +1,7 @@
 {
   "name": "portfoli-website",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "private": true,
   "description": "Shivendra Gupta - Full-Stack Java Developer Portfolio",
   "scripts": {
     "start": "node server.js"
@@ -8,7 +9,6 @@
   "keywords": [],
   "author": "Shivendra Gupta",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "nodemailer": "^9.0.5"
   }
