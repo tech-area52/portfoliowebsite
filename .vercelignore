@@ -1,0 +1,10 @@
+# Ignore local development server from Vercel deployment
+server.js
+
+# Ignore large archives and screenshot assets
+*.zip
+Screenshot*.png
+video_frames_smaller_jpg90.zip
+
+# Ignore local storage
+data/messages.json
