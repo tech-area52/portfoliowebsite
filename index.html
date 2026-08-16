@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shivendra Gupta - Full-Stack Java Developer Portfolio | Java, Spring Boot, REST APIs, MySQL">
+  <title>Shivendra Gupta — Full-Stack Java Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="stylesheet" href="style.css?v=2.0.0">
+</head>
+<body>
+  <!-- Top Progress Bar (Non-blocking) -->
+  <div id="loader" class="loader-overlay" aria-live="polite">
+    <div class="loader-content">
+      <div class="loader-progress-track">
+        <div id="progress-bar" class="loader-progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Fixed Canvas Video Stream -->
+  <div class="canvas-container">
+    <canvas id="animation-canvas"></canvas>
+    <div class="canvas-overlay"></div>
+  </div>
+
+  <!-- Sticky Professional Navigation Bar -->
+  <header class="site-header" id="site-header">
+    <div class="nav-container">
+      <!-- LEFT: Logo & Name -->
+      <a href="#home" class="nav-brand" aria-label="Shivendra Gupta - Home">
+        <span class="nav-brand-badge">SG</span>
+        <span class="nav-brand-name">Shivendra Gupta</span>
+      </a>
+
+      <!-- RIGHT: Navigation Links -->
+      <nav class="nav-menu" id="nav-menu" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="#process" class="nav-link">Process</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+          <li class="nav-item nav-item-cta">
+            <a href="Shivendra_Gupta_Resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-link nav-resume-btn" download="Shivendra_Gupta_Resume.pdf">
+              <span>Resume</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Scrollable Portfolio Content -->
+  <div class="portfolio-wrapper">
+
+    <!-- Hero Two-Column Editorial Intro -->
+    <section class="hero-editorial" id="home">
+      <!-- Left Column -->
+      <div class="hero-col hero-left">
+        <div class="hero-status-badge-wrap">
+          <span class="status-pill"><span class="status-dot"></span> OPEN TO OPPORTUNITIES</span>
+        </div>
+        <div class="discipline-tag">
+          <h2>JAVA / SPRING / FULL-STACK</h2>
+          <div class="discipline-sub">
+            <span>JAVA & SPRING BOOT</span>
+            <span class="sep">•</span>
+            <span>REST APIS & JPA</span>
+            <span class="sep">•</span>
+            <span>FULL-STACK WEB</span>
+          </div>
+        </div>
+
+        <div class="quote-block">
+          <span class="quote-mark">“</span>
+          <p class="quote-text">I BUILD SCALABLE FULL-STACK APPLICATIONS AND ROBUST BACKEND SYSTEMS THAT ARE FAST, RELIABLE AND IMPACTFUL.</p>
+          <div class="signature">Shivendra G.</div>
+        </div>
+
+        <!-- Hero Get in Touch Button -->
+        <div class="hero-cta-wrap">
+          <a href="#contact" class="hero-get-in-touch-btn" id="hero-get-in-touch">
+            <span>Get in Touch</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Center Spacer for Canvas Visual Focus -->
+      <div class="hero-col hero-center"></div>
+
+      <!-- Right Column -->
+      <div class="hero-col hero-right">
+        <div class="profile-meta">
+          <h3 class="author-name">SHIVENDRA GUPTA</h3>
+          <span class="author-role">JAVA BACKEND DEVELOPER | ASPIRING FULL-STACK DEVELOPER</span>
+          <p class="author-bio">
+            I'm a Computer Science graduate focused on building practical web applications with <strong>Java, Spring Boot, REST APIs, and MySQL</strong>. I enjoy turning ideas into working applications, designing clean backend logic, connecting applications with databases, and testing APIs with Postman. I'm also continuously improving my <strong>Data Structures &amp; Algorithms (DSA)</strong> and exploring full-stack development to become a well-rounded software developer.
+          </p>
+        </div>
+
+        <!-- Metrics Badges -->
+        <div class="stats-row">
+          <div class="stat-card">
+            <span class="stat-number">JAVA</span>
+            <span class="stat-label">SPRING BOOT & MYSQL</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">DSA</span>
+            <span class="stat-label">ACTIVE LEARNER & CODER</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">CLEAN ARCHITECTURE</span>
+          </div>
+        </div>
+
+        <!-- Circular Rotating Emblem -->
+        <div class="rotating-emblem-wrap">
+          <div class="rotating-emblem">
+            <svg viewBox="0 0 100 100" class="emblem-svg">
+              <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+              <text>
+                <textPath href="#circlePath" startOffset="0%">
+                  FULL-STACK JAVA • DSA & ALGORITHMS •
+                </textPath>
+              </text>
+            </svg>
+            <div class="emblem-center-icon">⚡</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT I DO Section -->
+    <section class="services-section" id="skills">
+      <div class="section-header">
+        <h3 class="section-title">WHAT I DO</h3>
+      </div>
+
+      <div class="services-grid">
+        <!-- 1. Java & Spring Boot -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M16.5 9.4 7.55 4.24a1.78 1.78 0 0 0-2.5 1.55v12.42a1.78 1.78 0 0 0 2.5 1.55L16.5 14.6a1.78 1.78 0 0 0 0-3.2z"/>
+            </svg>
+          </div>
+          <h4 class="service-title">JAVA & SPRING BOOT</h4>
+          <p class="service-desc">Building enterprise backends, modular Spring Boot microservices, and layered MVC architecture.</p>
+        </div>
+
+        <!-- 2. Data Structures & Algorithms -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+              <polyline points="2 17 12 22 22 17"/>
+              <polyline points="2 12 12 17 22 12"/>
+            </svg>
+          </div>
+          <h4 class="service-title">DATA STRUCTURES & ALGORITHMS</h4>
+          <p class="service-desc">Actively practicing DSA in Java — mastering arrays, trees, graphs, sorting, and time/space complexity optimization.</p>
+        </div>
+
+        <!-- 3. REST API Development -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h4 class="service-title">REST API DEVELOPMENT</h4>
+          <p class="service-desc">Designing performant, secure RESTful APIs with JSON, Spring Data JPA, and comprehensive testing.</p>
+        </div>
+
+        <!-- 4. Database Architecture -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+          </div>
+          <h4 class="service-title">DATABASE ARCHITECTURE</h4>
+          <p class="service-desc">Designing relational MySQL schemas, Hibernate ORM mappings, and optimized CRUD queries.</p>
+        </div>
+
+        <!-- 5. Full-Stack Web -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+          </div>
+          <h4 class="service-title">FULL-STACK WEB</h4>
+          <p class="service-desc">Creating responsive frontend interfaces with JavaScript, HTML5 & CSS3 to seamlessly integrate with Java APIs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dedicated MY PROCESS Section -->
+    <section class="process-section" id="process">
+      <div class="section-header">
+        <h3 class="section-title">MY PROCESS</h3>
+        <p class="section-subtext">A disciplined, step-by-step engineering approach from problem breakdown to continuous improvement.</p>
+      </div>
+
+      <div class="process-timeline-grid">
+        <!-- Step 1 -->
+        <div class="process-card">
+          <div class="process-card-top">
+            <span class="process-step-badge">STEP 01</span>
+            <span class="process-step-icon">🎯</span>
+          </div>
+          <h4 class="process-card-title">UNDERSTAND</h4>
+          <p class="process-card-desc">Understand the requirements, plan the features, and break the problem into smaller tasks.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="process-card">
+          <div class="process-card-top">
+            <span class="process-step-badge">STEP 02</span>
+            <span class="process-step-icon">📐</span>
+          </div>
+          <h4 class="process-card-title">PLAN</h4>
+          <p class="process-card-desc">Design the application structure, database tables, and REST API endpoints before starting development.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="process-card">
+          <div class="process-card-top">
+            <span class="process-step-badge">STEP 03</span>
+            <span class="process-step-icon">⚡</span>
+          </div>
+          <h4 class="process-card-title">BUILD</h4>
+          <p class="process-card-desc">Develop the application using Java, Spring Boot, REST APIs, JPA/Hibernate, and MySQL.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="process-card">
+          <div class="process-card-top">
+            <span class="process-step-badge">STEP 04</span>
+            <span class="process-step-icon">🧪</span>
+          </div>
+          <h4 class="process-card-title">TEST &amp; IMPROVE</h4>
+          <p class="process-card-desc">Test APIs with Postman, handle errors, fix bugs, and improve the code as I learn.</p>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="process-card">
+          <div class="process-card-top">
+            <span class="process-step-badge">STEP 05</span>
+            <span class="process-step-icon">🚀</span>
+          </div>
+          <h4 class="process-card-title">LEARN &amp; GROW</h4>
+          <p class="process-card-desc">Keep improving my DSA, Java, Spring Boot, and full-stack development skills by building practical projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dedicated FEATURED PROJECTS Section -->
+    <section class="projects-section" id="projects">
+      <div class="section-header work-header">
+        <div>
+          <h3 class="section-title">FEATURED PROJECTS</h3>
+          <p class="section-subtext">Real-world applications built with Java, Spring Boot, REST APIs, and relational databases.</p>
+        </div>
+        <a href="https://github.com/tech-area52" target="_blank" rel="noopener noreferrer" class="view-more-link">
+          <span>View GitHub Repos</span>
+          <span class="btn-arrow">↗</span>
+        </a>
+      </div>
+
+      <!-- Spotlight Featured Project: ExamPrep -->
+      <div class="project-spotlight-card project-card-featured" data-project="examprep">
+        <div class="spotlight-content">
+          <div class="project-badge-row">
+            <span class="project-num-tag">PROJECT 01</span>
+            <span class="project-featured-badge">⭐ FEATURED SPOTLIGHT</span>
+            <span class="project-tech-badge">SPRING BOOT • REST API</span>
+          </div>
+          <h4 class="spotlight-title">ExamPrep</h4>
+          <p class="spotlight-subtitle">AI-Powered Exam Preparation Platform</p>
+          <p class="spotlight-desc">
+            An exam preparation platform designed to help students practice and prepare for exams through quizzes and structured learning.
+          </p>
+
+          <div class="project-tags-cloud">
+            <span class="tech-chip">Java</span>
+            <span class="tech-chip">Spring Boot</span>
+            <span class="tech-chip">REST APIs</span>
+            <span class="tech-chip">MySQL</span>
+            <span class="tech-chip">JavaScript</span>
+            <span class="tech-chip">MVC</span>
+          </div>
+
+          <ul class="project-feature-list">
+            <li><span class="feat-dot">✦</span> AI-generated quiz questions</li>
+            <li><span class="feat-dot">✦</span> Topic/subject-based practice</li>
+            <li><span class="feat-dot">✦</span> Quiz attempts &amp; score tracking</li>
+            <li><span class="feat-dot">✦</span> Student-focused learning experience</li>
+          </ul>
+
+          <div class="project-card-actions">
+            <a href="https://github.com/tech-area52" target="_blank" rel="noopener noreferrer" class="project-action-btn btn-github" title="View ExamPrep on GitHub">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+              <span>GitHub</span>
+              <span class="btn-arrow">↗</span>
+            </a>
+            <button type="button" class="project-action-btn btn-details" data-modal="examprep" title="View Details for ExamPrep">
+              <span>View Details</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Spotlight Terminal Preview Mockup -->
+        <div class="spotlight-terminal" aria-hidden="true">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="terminal-title">ExamPrepController.java</span>
+          </div>
+          <div class="terminal-code">
+            <p><span class="code-kw">@RestController</span></p>
+            <p><span class="code-kw">@RequestMapping</span>(<span class="code-str">"/api/v1/quiz"</span>)</p>
+            <p><span class="code-kw">public class</span> <span class="code-cls">ExamPrepController</span> {</p>
+            <p>&nbsp;&nbsp;<span class="code-kw">@PostMapping</span>(<span class="code-str">"/generate"</span>)</p>
+            <p>&nbsp;&nbsp;<span class="code-kw">public</span> <span class="code-cls">ResponseEntity</span>&lt;<span class="code-cls">Quiz</span>&gt; <span class="code-fn">createQuiz</span>(</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">@RequestBody</span> <span class="code-cls">QuizRequest</span> req) {</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-cls">Quiz</span> q = quizService.<span class="code-fn">generate</span>(req);</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">return</span> <span class="code-cls">ResponseEntity</span>.<span class="code-fn">ok</span>(q);</p>
+            <p>&nbsp;&nbsp;}</p>
+            <p>}</p>
+          </div>
+          <div class="terminal-footer">
+            <span class="terminal-status"><span class="status-dot"></span> Spring Boot 3 • MySQL • REST</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondary Projects 2-Column Grid -->
+      <div class="projects-dual-grid">
+        <!-- PROJECT 02: Fleet Management System -->
+        <article class="project-card" data-project="fleet">
+          <div class="project-card-header">
+            <div class="project-badge-row">
+              <span class="project-num-tag">02</span>
+              <span class="project-tech-badge">SPRING BOOT • MYSQL</span>
+            </div>
+            <h4 class="project-card-title">Fleet Management System</h4>
+            <p class="project-card-subtitle">Centralized Fleet Operations &amp; Logistics</p>
+          </div>
+          
+          <p class="project-card-desc">
+            A web application designed to manage fleet-related operations and business information through a centralized system.
+          </p>
+
+          <div class="project-tags-cloud">
+            <span class="tech-chip">Java</span>
+            <span class="tech-chip">Spring Boot</span>
+            <span class="tech-chip">MySQL</span>
+            <span class="tech-chip">REST APIs</span>
+            <span class="tech-chip">Bootstrap</span>
+          </div>
+
+          <ul class="project-feature-list">
+            <li><span class="feat-dot">✦</span> Fleet &amp; vehicle record management</li>
+            <li><span class="feat-dot">✦</span> Driver &amp; route allocation</li>
+            <li><span class="feat-dot">✦</span> Maintenance &amp; status tracking</li>
+            <li><span class="feat-dot">✦</span> Relational database integration</li>
+          </ul>
+
+          <div class="project-card-actions">
+            <a href="https://github.com/tech-area52" target="_blank" rel="noopener noreferrer" class="project-action-btn btn-github" title="View Fleet Management System on GitHub">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+              <span>GitHub</span>
+              <span class="btn-arrow">↗</span>
+            </a>
+            <button type="button" class="project-action-btn btn-details" data-modal="fleet" title="View Details for Fleet Management System">
+              <span>View Details</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- PROJECT 03: Import-Export Management System -->
+        <article class="project-card" data-project="importexport">
+          <div class="project-card-header">
+            <div class="project-badge-row">
+              <span class="project-num-tag">03</span>
+              <span class="project-tech-badge">SPRING BOOT • HIBERNATE</span>
+            </div>
+            <h4 class="project-card-title">Import-Export Management System</h4>
+            <p class="project-card-subtitle">Trade, Inventory &amp; Shipment Tracking</p>
+          </div>
+          
+          <p class="project-card-desc">
+            A web application for managing import-export products, inventory and related business operations through a centralized system.
+          </p>
+
+          <div class="project-tags-cloud">
+            <span class="tech-chip">Java</span>
+            <span class="tech-chip">Spring Boot</span>
+            <span class="tech-chip">MySQL</span>
+            <span class="tech-chip">Hibernate</span>
+            <span class="tech-chip">REST APIs</span>
+          </div>
+
+          <ul class="project-feature-list">
+            <li><span class="feat-dot">✦</span> Product &amp; shipment management</li>
+            <li><span class="feat-dot">✦</span> Import/export transaction records</li>
+            <li><span class="feat-dot">✦</span> Inventory level &amp; stock tracking</li>
+            <li><span class="feat-dot">✦</span> Order processing &amp; database operations</li>
+          </ul>
+
+          <div class="project-card-actions">
+            <a href="https://github.com/tech-area52" target="_blank" rel="noopener noreferrer" class="project-action-btn btn-github" title="View Import-Export Management System on GitHub">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+              <span>GitHub</span>
+              <span class="btn-arrow">↗</span>
+            </a>
+            <button type="button" class="project-action-btn btn-details" data-modal="importexport" title="View Details for Import-Export Management System">
+              <span>View Details</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Bottom Showcase: ABOUT ME & TOOLS & TESTIMONIAL -->
+    <section class="about-tools-section" id="about">
+      <!-- About Me Card -->
+      <div class="about-card">
+        <div class="section-header">
+          <h3 class="section-title">ABOUT ME</h3>
+        </div>
+        <div class="about-content">
+          <div class="avatar-box">
+            <div class="avatar-img-placeholder">
+              <span>SG</span>
+            </div>
+          </div>
+          <div class="about-text">
+            <p class="about-philosophy">"I believe great software combines robust, scalable backend architecture with intuitive, responsive user experiences."</p>
+            <ul class="about-bullets">
+              <li><span class="bullet-dot">✦</span> Robust Layered Architecture</li>
+              <li><span class="bullet-dot">✦</span> Clean & Maintainable Code</li>
+              <li><span class="bullet-dot">✦</span> Continuous DSA & Problem Solving</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tools I Use -->
+      <div class="tools-card">
+        <div class="section-header">
+          <h3 class="section-title">TECH STACK</h3>
+        </div>
+        <div class="tools-grid">
+          <div class="tool-pill"><span class="tool-icon">☕</span> Java</div>
+          <div class="tool-pill"><span class="tool-icon">🍃</span> Spring Boot</div>
+          <div class="tool-pill"><span class="tool-icon">🧩</span> DSA in Java</div>
+          <div class="tool-pill"><span class="tool-icon">🗄️</span> MySQL</div>
+          <div class="tool-pill"><span class="tool-icon">⚡</span> REST APIs</div>
+          <div class="tool-pill"><span class="tool-icon">📦</span> Hibernate</div>
+          <div class="tool-pill"><span class="tool-icon">💛</span> JavaScript</div>
+          <div class="tool-pill"><span class="tool-icon">🐙</span> Git & GitHub</div>
+          <div class="tool-pill"><span class="tool-icon">🚀</span> Postman</div>
+          <div class="tool-pill"><span class="tool-icon">💻</span> IntelliJ IDEA</div>
+        </div>
+      </div>
+
+      <!-- What I Focus On Card -->
+      <div class="testimonial-card">
+        <div class="section-header">
+          <h3 class="section-title">WHAT I FOCUS ON</h3>
+        </div>
+        <span class="testimonial-quote-icon">“</span>
+        <p class="testimonial-text">
+          "I enjoy turning ideas into practical applications, writing clean and understandable code, and continuously improving my problem-solving skills through real projects."
+        </p>
+        <div class="testimonial-author">
+          <span class="author-title">— Shivendra Gupta</span>
+          <span class="author-sub">Computer Science Graduate | Java Backend Developer</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer / Get In Touch / Contact Section -->
+    <footer id="contact" class="collaborate-footer">
+      <div class="contact-grid-layout">
+        
+        <!-- Left Column: Intro, Details & Links -->
+        <div class="contact-info-col">
+          <span class="footer-tag">CONTACT</span>
+          <h2 class="footer-title">GET IN TOUCH</h2>
+          <p class="footer-desc">
+            Looking for a Full-Stack Java Developer for your engineering team, or want to discuss an upcoming backend architecture? Send a message and let's connect!
+          </p>
+
+          <div class="contact-details-list">
+            <div class="contact-detail-item">
+              <span class="detail-icon">📍</span>
+              <div>
+                <span class="detail-label">LOCATION</span>
+                <span class="detail-val">Mumbai, Maharashtra, India</span>
+              </div>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="detail-icon">💼</span>
+              <div>
+                <span class="detail-label">AVAILABILITY</span>
+                <span class="detail-val">Open to Java Backend &amp; Full-Stack Opportunities</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Links & Resume Download -->
+          <div class="contact-social-pills">
+            <a href="https://www.linkedin.com/in/shivendraguptatech" target="_blank" rel="noopener noreferrer" class="contact-social-pill" title="Connect on LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+              <span>LinkedIn</span>
+              <span class="pill-arrow">↗</span>
+            </a>
+
+            <a href="https://github.com/tech-area52" target="_blank" rel="noopener noreferrer" class="contact-social-pill" title="View GitHub Repositories">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+              <span>GitHub</span>
+              <span class="pill-arrow">↗</span>
+            </a>
+
+            <a href="Shivendra_Gupta_Resume.pdf" download="Shivendra_Gupta_Resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-social-pill contact-resume-pill" title="Download Resume (PDF)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download Resume</span>
+              <span class="pill-arrow">↓</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Professional Contact Form -->
+        <div class="contact-form-col">
+          <form id="contact-form" class="portfolio-contact-form" novalidate>
+            <div class="form-header">
+              <h3 class="form-title">Send a Message</h3>
+              <p class="form-subtitle">Fill in the details below and I'll get back to you soon.</p>
+            </div>
+
+            <!-- Status Alert Banner -->
+            <div id="contact-status" class="contact-status-banner" style="display: none;" aria-live="polite"></div>
+
+            <!-- Name and Email Row -->
+            <div class="form-row form-row-two">
+              <div class="form-group">
+                <label for="contact-name" class="form-label">Your Name <span class="req">*</span></label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  class="form-control"
+                  placeholder="e.g. Alex Johnson"
+                  required
+                  autocomplete="name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email" class="form-label">Email Address <span class="req">*</span></label>
+                <input
+                  type="email"
+                  id="contact-email"
+                  name="email"
+                  class="form-control"
+                  placeholder="e.g. alex@example.com"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+            </div>
+
+            <!-- Subject (Optional) -->
+            <div class="form-group">
+              <label for="contact-subject" class="form-label">Subject <span class="opt">(Optional)</span></label>
+              <input
+                type="text"
+                id="contact-subject"
+                name="subject"
+                class="form-control"
+                placeholder="e.g. Java Full-Stack Role / Project Inquiry"
+                autocomplete="off"
+              />
+            </div>
+
+            <!-- Message (Required) -->
+            <div class="form-group">
+              <label for="contact-message" class="form-label">Message <span class="req">*</span></label>
+              <textarea
+                id="contact-message"
+                name="message"
+                class="form-control form-textarea"
+                rows="4"
+                placeholder="Write your message here..."
+                required
+              ></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-actions">
+              <button type="submit" id="contact-submit-btn" class="form-submit-btn">
+                <span>Send Message</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <span>© 2026 Shivendra Gupta. All rights reserved.</span>
+        <span>Built with Java, Spring Boot &amp; modern web technologies</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Floating "Ask About Shivendra" Chatbot Trigger Button -->
+  <button id="chat-trigger" class="chat-floating-btn" aria-label="Ask About Shivendra" title="Ask About Shivendra">
+    <span class="chat-btn-icon">⚡</span>
+    <span class="chat-btn-label">Ask About Shivendra</span>
+    <span class="chat-btn-pulse"></span>
+  </button>
+
+  <!-- AI Chatbot Modal Window -->
+  <div id="chat-modal" class="chat-modal-window" aria-hidden="true" role="dialog" aria-labelledby="chat-title">
+    <!-- Chat Header -->
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-header-avatar">⚡</div>
+        <div>
+          <h4 id="chat-title" class="chat-title">Ask About Shivendra <span class="chat-ai-badge">AI Assistant</span></h4>
+          <p class="chat-subtitle">Ask me about technical skills, projects, education, internship or resume.</p>
+        </div>
+      </div>
+      <div class="chat-header-actions">
+        <button type="button" id="chat-clear" class="chat-action-icon-btn" aria-label="Reset Conversation" title="Reset Conversation">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="1 4 1 10 7 10"></polyline>
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+          </svg>
+          <span class="chat-action-btn-text">Reset</span>
+        </button>
+        <button id="chat-close" class="chat-close-btn" aria-label="Close Chat" title="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Suggested Questions Chips Bar -->
+    <div id="chat-suggestions" class="chat-suggestions-bar">
+      <span class="suggestions-label">💡 Suggested Questions:</span>
+      <div class="suggestions-scroll">
+        <button type="button" class="suggestion-chip" data-question="What technologies does Shivendra know?">☕ Java Stack</button>
+        <button type="button" class="suggestion-chip" data-question="Tell me about the ExamPrep project.">🚀 ExamPrep</button>
+        <button type="button" class="suggestion-chip" data-question="Tell me about his internship at SDAC Infotech.">🏢 SDAC Internship</button>
+        <button type="button" class="suggestion-chip" data-question="What is Shivendra's education and CGPA?">🎓 8.5 CGPA Education</button>
+        <button type="button" class="suggestion-chip" data-question="How can I download Shivendra's resume?">📄 Download Resume</button>
+        <button type="button" class="suggestion-chip" data-question="Why should we hire Shivendra?">💡 Why Hire Shivendra?</button>
+        <button type="button" class="suggestion-chip" data-question="How can I contact Shivendra?">📬 Contact &amp; Phone</button>
+      </div>
+    </div>
+
+    <!-- Scrollable Chat Messages Container -->
+    <div id="chat-messages" class="chat-messages-container">
+      <!-- AI Welcome Greeting -->
+      <div class="chat-msg-row ai-row">
+        <div class="chat-avatar ai-avatar">⚡</div>
+        <div class="chat-bubble ai-bubble">
+          <p>👋 <strong>Hi! I'm Shivendra's AI Assistant.</strong></p>
+          <p>You can ask me anything about his <strong>Java &amp; Spring Boot</strong> expertise, projects like <strong>ExamPrep</strong>, his <strong>8.5 CGPA</strong> degree, or download his resume!</p>
+          <div class="chat-quick-actions">
+            <a href="/Shivendra_Gupta_Resume.pdf" download="Shivendra_Gupta_Resume.pdf" class="chat-action-pill">📄 Download Resume</a>
+            <a href="https://github.com/tech-area52" target="_blank" rel="noopener noreferrer" class="chat-action-pill">🐙 GitHub</a>
+            <a href="mailto:guptashivendra697@gmail.com" class="chat-action-pill">✉️ Send Email</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Input Form -->
+    <form id="chat-form" class="chat-input-form">
+      <div class="chat-input-wrapper">
+        <input
+          type="text"
+          id="chat-input"
+          class="chat-input-field"
+          placeholder="Ask a question about Shivendra..."
+          autocomplete="off"
+          maxlength="500"
+          required
+        />
+        <button type="button" id="chat-mic-btn" class="chat-mic-button" aria-label="Voice Input" title="Voice Input (Speech-to-Text)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="23"></line>
+            <line x1="8" y1="23" x2="16" y2="23"></line>
+          </svg>
+        </button>
+        <button type="submit" id="chat-send-btn" class="chat-send-button" aria-label="Send Message" title="Send Message">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Interactive Project Details Modal -->
+  <div id="project-modal" class="project-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+    <div class="project-modal-dialog">
+      <button type="button" id="project-modal-close" class="project-modal-close-btn" aria-label="Close Project Details" title="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div id="project-modal-body" class="project-modal-body">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=2.0.0"></script>
+  <script src="contact.js?v=2.0.0"></script>
+  <script src="chatbot.js?v=2.0.0"></script>
+</body>
+</html>

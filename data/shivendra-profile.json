@@ -1,0 +1,245 @@
+{
+  "personal": {
+    "name": "Shivendra Gupta",
+    "careerFocus": "Java Backend Developer | Aspiring Full-Stack Developer",
+    "location": "Bhayander East, Thane, Maharashtra, India",
+    "phone": "+91 9372670012",
+    "email": "guptashivendra697@gmail.com",
+    "languages": [
+      "English",
+      "Hindi",
+      "Marathi"
+    ],
+    "summaryBio": "Bachelor of Computer Science graduate with hands-on experience in Java, Spring Boot, RESTful APIs, HTML, CSS, Bootstrap, SQL, and MySQL. Experienced in application development, responsive UI development, database integration, and Git/GitHub-based source control. Seeking an entry-level Software Developer role to build reliable applications and contribute to a development team.",
+    "focusQuote": "I enjoy turning ideas into practical applications, writing clean and understandable code, and continuously improving my problem-solving skills through real projects."
+  },
+  "technicalSkills": {
+    "programming": [
+      "Java (Core Java)",
+      "Python (Basic)",
+      "JavaScript (Basic)"
+    ],
+    "backend": [
+      "Spring Boot",
+      "RESTful APIs",
+      "Spring MVC",
+      "Spring Data JPA",
+      "Hibernate",
+      "JDBC"
+    ],
+    "frontend": [
+      "HTML5",
+      "CSS3",
+      "Bootstrap",
+      "JavaScript"
+    ],
+    "databases": [
+      "MySQL",
+      "SQL",
+      "MongoDB (Basic)"
+    ],
+    "tools": [
+      "Git",
+      "GitHub",
+      "Postman",
+      "IntelliJ IDEA",
+      "Eclipse",
+      "MS Office",
+      "QGIS",
+      "SPSS",
+      "Canva"
+    ],
+    "concepts": [
+      "Object-Oriented Programming (OOP)",
+      "MVC Architecture",
+      "CRUD Operations",
+      "Exception Handling",
+      "Data Structures and Algorithms (DSA)"
+    ]
+  },
+  "skillsList": [
+    "Java",
+    "Spring Boot",
+    "REST APIs",
+    "MySQL",
+    "SQL",
+    "Hibernate",
+    "Spring Data JPA",
+    "HTML5",
+    "CSS3",
+    "Bootstrap",
+    "JavaScript",
+    "Python",
+    "MongoDB",
+    "Git",
+    "GitHub",
+    "Postman",
+    "Data Structures & Algorithms"
+  ],
+  "currentlyLearning": [
+    "Data Structures and Algorithms (DSA)",
+    "Advanced Java & Spring Boot",
+    "Spring Security",
+    "Microservices Architecture",
+    "Cloud Deployment"
+  ],
+  "experience": [
+    {
+      "role": "Software Development Intern",
+      "company": "SDAC Infotech",
+      "location": "Mumbai, India",
+      "responsibilities": [
+        "Assisted in developing hybrid applications integrated with Generative AI tools to improve user interactivity.",
+        "Built responsive, multi-device user interfaces using HTML, CSS, Bootstrap, and Java.",
+        "Worked with SQL and MySQL for relational database management, backend data retrieval, and integration.",
+        "Used Git and GitHub for source code management, version tracking, and collaboration on code features."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Computer Science (B.Sc. CS)",
+      "institution": "Thakur Ramnarayan College of Arts and Commerce",
+      "university": "Mumbai University",
+      "score": "CGPA: 8.5",
+      "graduationYear": 2026
+    },
+    {
+      "degree": "Higher Secondary Certificate (HSC)",
+      "institution": "Mother Mary Junior College of Arts, Science and Commerce",
+      "score": "54.46%"
+    },
+    {
+      "degree": "Secondary School Certificate (SSC)",
+      "institution": "K.B. Narawat High School",
+      "score": "67.80%"
+    }
+  ],
+  "certificationsAndTraining": [
+    {
+      "title": "Android App Development using Kotlin",
+      "issuer": "IIT Bombay",
+      "period": "2025–2026",
+      "description": "Learned core mobile application architecture and built native Android user interfaces using Kotlin."
+    },
+    {
+      "title": "Campus to Corporate Career Training",
+      "issuer": "TNS India Foundation",
+      "description": "Training in business communication, corporate workplace dynamics, and professional effectiveness."
+    }
+  ],
+  "projects": [
+    {
+      "name": "ExamPrep",
+      "subtitle": "AI-Powered Exam Preparation Platform",
+      "featured": true,
+      "technologies": [
+        "Java",
+        "Spring Boot",
+        "REST APIs",
+        "MySQL",
+        "JavaScript"
+      ],
+      "description": "An exam preparation platform designed to help students practice and prepare for exams through quizzes and structured learning.",
+      "features": [
+        "AI-generated quiz questions",
+        "Topic/subject-based practice",
+        "Quiz attempt tracking",
+        "Score and results review",
+        "Student-focused learning experience"
+      ],
+      "architecture": "Layered MVC Architecture (Controller → Service → Repository → Database)",
+      "gitHub": "https://github.com/tech-area52"
+    },
+    {
+      "name": "Fleet Management System",
+      "subtitle": "Centralized Fleet Operations & Logistics",
+      "featured": false,
+      "technologies": [
+        "Java",
+        "Spring Boot",
+        "MySQL",
+        "REST APIs",
+        "Bootstrap"
+      ],
+      "description": "A web application designed to manage fleet-related operations and business information through a centralized system.",
+      "features": [
+        "Fleet & vehicle record management",
+        "Driver and route allocation",
+        "Maintenance & status tracking",
+        "Relational database operations",
+        "Layered MVC architecture"
+      ],
+      "architecture": "Layered MVC Architecture with MySQL Integration",
+      "gitHub": "https://github.com/tech-area52"
+    },
+    {
+      "name": "Import-Export Management System",
+      "subtitle": "Trade, Inventory & Shipment Management",
+      "featured": false,
+      "technologies": [
+        "Java",
+        "Spring Boot",
+        "MySQL",
+        "Hibernate",
+        "REST APIs"
+      ],
+      "description": "A web application for managing import-export products, inventory and related business operations through a centralized system.",
+      "features": [
+        "Product & shipment catalog",
+        "Import/export transaction records",
+        "Inventory level & stock tracking",
+        "Order processing & status workflow",
+        "Relational database management"
+      ],
+      "architecture": "Layered Architecture with Hibernate ORM & MySQL",
+      "gitHub": "https://github.com/tech-area52"
+    }
+  ],
+  "myProcess": [
+    {
+      "step": "01",
+      "name": "UNDERSTAND",
+      "description": "Understand the requirements, plan the features, and break the problem into smaller tasks."
+    },
+    {
+      "step": "02",
+      "name": "PLAN",
+      "description": "Design the application structure, database tables, and REST API endpoints before starting development."
+    },
+    {
+      "step": "03",
+      "name": "BUILD",
+      "description": "Develop the application using Java, Spring Boot, REST APIs, JPA/Hibernate, and MySQL."
+    },
+    {
+      "step": "04",
+      "name": "TEST & IMPROVE",
+      "description": "Test APIs with Postman, handle errors, fix bugs, and improve the code as I learn."
+    },
+    {
+      "step": "05",
+      "name": "LEARN & GROW",
+      "description": "Keep improving my DSA, Java, Spring Boot, and full-stack development skills by building practical projects."
+    }
+  ],
+  "contact": {
+    "email": "guptashivendra697@gmail.com",
+    "phone": "+91 9372670012",
+    "location": "Bhayander East, Thane, Maharashtra, India",
+    "languages": [
+      "English",
+      "Hindi",
+      "Marathi"
+    ],
+    "linkedIn": "https://www.linkedin.com/in/shivendraguptatech",
+    "gitHub": "https://github.com/tech-area52"
+  },
+  "rules": [
+    "Only answer using information in this profile or the portfolio.",
+    "Never invent companies, employment experience, certifications, years of experience, or salary information.",
+    "If information is not available, reply strictly with: 'I don't have that information about Shivendra at the moment.'",
+    "Keep answers concise, friendly and professional.",
+    "Provide links to Email, LinkedIn, or GitHub when asked about contact information or repositories."
+  ]
+}
