@@ -402,6 +402,77 @@
         ],
         architecture: 'Layered Architecture with Hibernate ORM and MySQL Database',
         github: 'https://github.com/tech-area52'
+      },
+      'upi-mesh': {
+        num: '04',
+        title: 'UPI Without Internet',
+        sub: 'Offline UPI Payment Simulation / Spring Boot Backend',
+        overview: 'A Spring Boot-based simulation demonstrating how offline UPI payments can function in environments without internet connectivity using a peer-to-peer Bluetooth-style mesh gossip network.<br><br><em>(Please note: This project is an architectural demonstration and educational simulation, not a real production UPI payment system.)</em>',
+        problem: 'In remote areas, natural disasters, flights, or network dead zones, users cannot access central banking servers to authorize digital payments. Without an internet connection, traditional financial transactions fail completely.',
+        technologies: [
+          'Java 17',
+          'Spring Boot 3.3.5',
+          'Spring Data JPA',
+          'H2 Database',
+          'Thymeleaf',
+          'REST API',
+          'Maven',
+          'RSA-OAEP / AES-GCM',
+          'SHA-256',
+          'JPA Transactions',
+          'Optimistic Locking'
+        ],
+        features: [
+          'Offline payment instruction creation',
+          'Encrypted payment packets',
+          'Bluetooth-style mesh gossip simulation',
+          'TTL-based packet propagation',
+          'Bridge device synchronization',
+          'SHA-256 based idempotency',
+          'Duplicate payment prevention',
+          'RSA-OAEP + AES-GCM hybrid encryption',
+          'Payment freshness validation',
+          'Transactional debit/credit settlement',
+          'Optimistic locking',
+          'Concurrent duplicate-payment testing'
+        ],
+        archFlow: [
+          { num: '01', label: 'Sender Phone', desc: 'Creates offline PaymentInstruction' },
+          { num: '02', label: 'PaymentInstruction', desc: 'Payer, payee, amount & timestamp nonce' },
+          { num: '03', label: 'Hybrid Encryption', desc: 'RSA-OAEP key wrapping + AES-GCM payload' },
+          { num: '04', label: 'MeshPacket', desc: 'Encrypted packet with TTL & hop budget' },
+          { num: '05', label: 'Bluetooth Mesh Gossip', desc: 'Multi-hop peer-to-peer device relaying' },
+          { num: '06', label: 'Bridge Phone', desc: 'Device with internet connectivity receives packet' },
+          { num: '07', label: 'HTTPS POST', desc: 'Secure upload to Spring Boot server' },
+          { num: '08', label: 'Spring Boot Backend', desc: 'REST controller handles ingestion' },
+          { num: '09', label: 'SHA-256 Idempotency Check', desc: 'Packet hash verified against processed cache' },
+          { num: '10', label: 'Decrypt + Validate', desc: 'Private key decryption & freshness check' },
+          { num: '11', label: 'Transactional Settlement', desc: 'Atomic @Transactional execution' },
+          { num: '12', label: 'Debit Sender / Credit Receiver', desc: 'Optimistic locking prevents race conditions' },
+          { num: '13', label: 'Transaction Ledger', desc: 'Immutable settlement record recorded' }
+        ],
+        demoSteps: [
+          { step: 'STEP 01', title: 'Inject into Mesh', desc: 'Compose a payment on the sender phone and inject the encrypted MeshPacket into the local peer cluster.' },
+          { step: 'STEP 02', title: 'Gossip Propagation', desc: 'Run gossip simulation rounds to propagate the payment packet between simulated devices with TTL tracking.' },
+          { step: 'STEP 03', title: 'Bridges Upload to Backend', desc: 'Simulate bridge devices regaining internet connectivity and uploading buffered packets via HTTPS POST.' },
+          { step: 'STEP 04', title: 'Verify & Settle', desc: 'Inspect the live account balances and transaction ledger; verify idempotency rejection under concurrency.' }
+        ],
+        testing: {
+          name: 'IdempotencyConcurrencyTest',
+          desc: 'A multithreaded test suite that dispatches the exact same payment packet simultaneously across multiple concurrent threads. It verifies that the Spring Boot backend settles the payment exactly once, properly rejecting all duplicate requests and maintaining zero balance anomalies.'
+        },
+        highlights: [
+          { title: 'Spring Boot 3.3.5 & Java 17', desc: 'Modern enterprise backend foundation with clean layered design.' },
+          { title: 'REST API', desc: 'RESTful endpoints for packet intake, device synchronization, and ledger reporting.' },
+          { title: 'JPA & H2 Database', desc: 'Relational persistence with embedded H2 for rapid in-memory verification.' },
+          { title: 'Transactions', desc: '@Transactional ACID boundaries ensure sender debit and receiver credit execute atomically.' },
+          { title: 'Idempotency', desc: 'SHA-256 cryptographic packet hashing prevents double spending completely.' },
+          { title: 'Concurrency', desc: 'Optimistic locking (@Version) prevents race conditions during parallel sync.' },
+          { title: 'Hybrid Encryption', desc: 'RSA-OAEP + AES-GCM ensures end-to-end payload confidentiality & integrity.' },
+          { title: 'Mesh Simulation', desc: 'Simulates peer-to-peer gossip propagation without requiring active internet.' }
+        ],
+        github: 'https://github.com/tech-area52/Recent-Projects/tree/main/UPI_Without_Internet',
+        demoUrl: '#LIVE_DEMO_URL#'
       }
     };
 
@@ -411,6 +482,149 @@
 
       const techChipsHtml = data.technologies.map(t => `<span class="tech-chip">${t}</span>`).join('');
       const featuresHtml = data.features.map(f => `<li><span class="feat-dot">✦</span><span>${f}</span></li>`).join('');
+
+      let customSectionsHtml = '';
+
+      // 1. Optional Problem It Solves / Contribution (standard projects)
+      if (data.problem) {
+        customSectionsHtml += `
+          <div>
+            <h5 class="modal-block-title">Problem It Solves</h5>
+            <p class="modal-block-text">${data.problem}</p>
+          </div>
+        `;
+      }
+
+      if (data.contribution) {
+        customSectionsHtml += `
+          <div>
+            <h5 class="modal-block-title">My Contribution</h5>
+            <p class="modal-block-text">${data.contribution}</p>
+          </div>
+        `;
+      }
+
+      // 2. Key Features
+      customSectionsHtml += `
+        <div>
+          <h5 class="modal-block-title">Key Features</h5>
+          <ul class="modal-feature-list" style="margin-top: 0.35rem;">${featuresHtml}</ul>
+        </div>
+      `;
+
+      // 3. Architecture Visual Flow (if provided)
+      if (data.archFlow && Array.isArray(data.archFlow)) {
+        const flowStepsHtml = data.archFlow.map((item, idx) => {
+          const isLast = idx === data.archFlow.length - 1;
+          return `
+            <div class="arch-flow-step">
+              <span class="arch-step-num">${item.num}</span>
+              <span class="arch-step-label">${item.label}</span>
+              <span class="arch-step-desc">${item.desc}</span>
+            </div>
+            ${!isLast ? '<div class="arch-flow-arrow" aria-hidden="true">↓</div>' : ''}
+          `;
+        }).join('');
+
+        customSectionsHtml += `
+          <div>
+            <h5 class="modal-block-title">Architecture Flow</h5>
+            <div class="modal-arch-flow">
+              ${flowStepsHtml}
+            </div>
+          </div>
+        `;
+      } else if (data.architecture) {
+        customSectionsHtml += `
+          <div>
+            <h5 class="modal-block-title">Architecture & Implementation</h5>
+            <p class="modal-block-text"><code>${data.architecture}</code></p>
+          </div>
+        `;
+      }
+
+      // 4. Demo Flow (if provided)
+      if (data.demoSteps && Array.isArray(data.demoSteps)) {
+        const demoStepsHtml = data.demoSteps.map(s => `
+          <div class="demo-step-card">
+            <div class="demo-step-header">
+              <span class="demo-step-tag">${s.step}</span>
+            </div>
+            <h6 class="demo-step-title">${s.title}</h6>
+            <p class="demo-step-desc">${s.desc}</p>
+          </div>
+        `).join('');
+
+        customSectionsHtml += `
+          <div>
+            <h5 class="modal-block-title">Demo Flow</h5>
+            <div class="modal-demo-steps">
+              ${demoStepsHtml}
+            </div>
+          </div>
+        `;
+      }
+
+      // 5. Testing & Concurrency Validation (if provided)
+      if (data.testing) {
+        customSectionsHtml += `
+          <div>
+            <h5 class="modal-block-title">Testing &amp; Concurrency</h5>
+            <div class="modal-highlight-box">
+              <h6 class="highlight-title"><code>${data.testing.name}</code></h6>
+              <p class="highlight-desc" style="margin-top: 0.35rem;">${data.testing.desc}</p>
+            </div>
+          </div>
+        `;
+      }
+
+      // 6. Technical Highlights (if provided)
+      if (data.highlights && Array.isArray(data.highlights)) {
+        const highlightsHtml = data.highlights.map(h => `
+          <div class="highlight-item">
+            <div class="highlight-title">✦ ${h.title}</div>
+            <div class="highlight-desc">${h.desc}</div>
+          </div>
+        `).join('');
+
+        customSectionsHtml += `
+          <div>
+            <h5 class="modal-block-title">Technical Highlights</h5>
+            <div class="modal-highlight-grid">
+              ${highlightsHtml}
+            </div>
+          </div>
+        `;
+      }
+
+      // Modal action buttons (GitHub + Live Demo if provided)
+      let actionsHtml = `
+        <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="project-action-btn btn-github" title="View on GitHub" aria-label="View on GitHub">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+          <span>View on GitHub</span>
+          <span class="btn-arrow">↗</span>
+        </a>
+      `;
+
+      if (data.demoUrl) {
+        const isPlaceholder = data.demoUrl === '#LIVE_DEMO_URL#' || data.demoUrl === '#' || !data.demoUrl.startsWith('http');
+        if (isPlaceholder) {
+          actionsHtml += `
+            <button type="button" class="project-action-btn btn-demo disabled" disabled title="Live Demo Coming Soon (URL: #LIVE_DEMO_URL#)" aria-label="Live Demo Coming Soon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+              <span>Live Demo (Coming Soon)</span>
+            </button>
+          `;
+        } else {
+          actionsHtml += `
+            <a href="${data.demoUrl}" target="_blank" rel="noopener noreferrer" class="project-action-btn btn-demo" title="Open Live Demo" aria-label="Open Live Demo">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+              <span>Live Demo</span>
+              <span class="btn-arrow">↗</span>
+            </a>
+          `;
+        }
+      }
 
       modalBody.innerHTML = `
         <div class="modal-header-section">
@@ -426,37 +640,15 @@
           </div>
 
           <div>
-            <h5 class="modal-block-title">Problem It Solves</h5>
-            <p class="modal-block-text">${data.problem}</p>
-          </div>
-
-          <div>
-            <h5 class="modal-block-title">My Contribution</h5>
-            <p class="modal-block-text">${data.contribution}</p>
-          </div>
-
-          <div>
             <h5 class="modal-block-title">Technologies Used</h5>
             <div class="project-tags-cloud" style="margin-top: 0.35rem;">${techChipsHtml}</div>
           </div>
 
-          <div>
-            <h5 class="modal-block-title">Key Features</h5>
-            <ul class="modal-feature-list" style="margin-top: 0.35rem;">${featuresHtml}</ul>
-          </div>
-
-          <div>
-            <h5 class="modal-block-title">Architecture & Implementation</h5>
-            <p class="modal-block-text"><code>${data.architecture}</code></p>
-          </div>
+          ${customSectionsHtml}
         </div>
 
         <div class="modal-actions">
-          <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="project-action-btn btn-github">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-            <span>View on GitHub</span>
-            <span class="btn-arrow">↗</span>
-          </a>
+          ${actionsHtml}
         </div>
       `;
 

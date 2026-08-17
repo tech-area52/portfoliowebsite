@@ -194,6 +194,37 @@
       ],
       "architecture": "Layered Architecture with Hibernate ORM & MySQL",
       "gitHub": "https://github.com/tech-area52"
+    },
+    {
+      "name": "UPI Without Internet",
+      "subtitle": "Offline UPI Payment Simulation / Spring Boot Backend",
+      "featured": false,
+      "technologies": [
+        "Java 17",
+        "Spring Boot 3.3.5",
+        "Spring Data JPA",
+        "H2 Database",
+        "Thymeleaf",
+        "REST API",
+        "Maven",
+        "RSA-OAEP & AES-GCM Encryption",
+        "SHA-256",
+        "JPA Transactions",
+        "Optimistic Locking"
+      ],
+      "description": "A Spring Boot-based simulation demonstrating offline UPI payments via a Bluetooth-style mesh network, encrypted payment packets, bridge synchronization, idempotency, and transactional settlement. (Note: Educational/architectural simulation, not a real production UPI payment system).",
+      "features": [
+        "Offline payment instruction creation",
+        "Encrypted payment packets (RSA-OAEP + AES-GCM)",
+        "Bluetooth-style mesh gossip simulation",
+        "TTL-based packet propagation",
+        "Bridge device synchronization",
+        "SHA-256 based idempotency & duplicate prevention",
+        "Transactional debit/credit settlement",
+        "Optimistic locking concurrency protection"
+      ],
+      "architecture": "Mesh Gossip Simulation → HTTPS POST Bridge Upload → Spring Boot Backend (SHA-256 Idempotency → Decrypt & Validate → Atomic Settlement → Immutable Ledger)",
+      "gitHub": "https://github.com/tech-area52/Recent-Projects/tree/main/UPI_Without_Internet"
     }
   ],
   "myProcess": [

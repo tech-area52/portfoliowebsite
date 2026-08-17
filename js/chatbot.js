@@ -97,17 +97,17 @@
 
     if (q.includes('skill') || q.includes('technolog') || q.includes('java') || q.includes('spring')) {
       return [
+        "Tell me about the UPI Without Internet project",
         "Tell me about the ExamPrep project",
-        "What is his experience with MySQL & databases?",
         "How can I download his resume?"
       ];
     }
 
-    if (q.includes('project') || q.includes('examprep') || q.includes('fleet') || q.includes('import')) {
+    if (q.includes('project') || q.includes('examprep') || q.includes('fleet') || q.includes('import') || q.includes('upi') || q.includes('mesh')) {
       return [
+        "How does the offline mesh UPI simulation work?",
         "What technologies were used in ExamPrep?",
-        "Where can I view his GitHub code?",
-        "What was his engineering process?"
+        "Where can I view his GitHub code?"
       ];
     }
 

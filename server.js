@@ -137,7 +137,7 @@ function handleLocalKnowledgeFallback(message) {
   }
 
   // 5. Work Experience / Internship (SDAC Infotech)
-  if (text.includes('intern') || text.includes('sdac') || text.includes('work experience') || text.includes('job experience') || text.includes('employment') || text.includes('experience') && (text.includes('work') || text.includes('company') || text.includes('job'))) {
+  if (/\bintern(ship|s)?\b/i.test(text) || text.includes('sdac') || text.includes('work experience') || text.includes('job experience') || text.includes('employment') || (text.includes('experience') && (text.includes('work') || text.includes('company') || text.includes('job')))) {
     return `**Software Development Intern** | **SDAC Infotech, Mumbai**\n\n• **Generative AI Integration**: Assisted in developing hybrid applications integrated with Generative AI tools to improve user interactivity.\n• **Frontend & UI**: Built responsive, multi-device user interfaces using HTML, CSS, Bootstrap, and Java.\n• **Database**: Worked with SQL and MySQL for relational database management, backend data retrieval, and integration.\n• **Version Control**: Used Git and GitHub for source code management, version tracking, and team collaboration.`;
   }
 
@@ -212,6 +212,11 @@ function handleLocalKnowledgeFallback(message) {
 
   if (text.includes('import') || text.includes('export') || text.includes('trade') || text.includes('inventory')) {
     const p = profileData.projects.find(pr => pr.name.toLowerCase().includes('import')) || profileData.projects[2];
+    return `**${p.name}** (${p.subtitle}):\n\n${p.description}\n\n• **Technologies**: ${p.technologies.join(', ')}\n• **Key Features**: ${p.features.join(', ')}\n• **Architecture**: \`${p.architecture}\`\n\nCheck out the repository on [GitHub](${p.gitHub || profileData.contact.gitHub}).`;
+  }
+
+  if (text.includes('upi') || text.includes('offline upi') || text.includes('mesh') || text.includes('idempotency') || text.includes('without internet')) {
+    const p = profileData.projects.find(pr => pr.name.toLowerCase().includes('upi')) || profileData.projects[3];
     return `**${p.name}** (${p.subtitle}):\n\n${p.description}\n\n• **Technologies**: ${p.technologies.join(', ')}\n• **Key Features**: ${p.features.join(', ')}\n• **Architecture**: \`${p.architecture}\`\n\nCheck out the repository on [GitHub](${p.gitHub || profileData.contact.gitHub}).`;
   }
 

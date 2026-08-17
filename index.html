@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-  <link rel="stylesheet" href="style.css?v=2.0.0">
+  <link rel="stylesheet" href="style.css?v=2.1.0">
 </head>
 <body>
   <!-- Top Progress Bar (Non-blocking) -->
@@ -440,12 +440,62 @@
           </ul>
 
           <div class="project-card-actions">
-            <a href="https://github.com/tech-area52" target="_blank" rel="noopener noreferrer" class="project-action-btn btn-github" title="View Import-Export Management System on GitHub">
+            <a href="https://github.com/tech-area52" target="_blank" rel="noopener noreferrer" class="project-action-btn btn-github" title="View Import-Export Management System on GitHub" aria-label="View Import-Export Management System on GitHub">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
               <span>GitHub</span>
               <span class="btn-arrow">↗</span>
             </a>
-            <button type="button" class="project-action-btn btn-details" data-modal="importexport" title="View Details for Import-Export Management System">
+            <button type="button" class="project-action-btn btn-details" data-modal="importexport" title="View Details for Import-Export Management System" aria-label="View Details for Import-Export Management System">
+              <span>View Details</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- PROJECT 04: UPI Without Internet -->
+        <article class="project-card" data-project="upi-mesh">
+          <div class="project-card-header">
+            <div class="project-badge-row">
+              <span class="project-num-tag">04</span>
+              <span class="project-tech-badge">SPRING BOOT • OFFLINE SIMULATION</span>
+            </div>
+            <h4 class="project-card-title">UPI Without Internet</h4>
+            <p class="project-card-subtitle">Offline UPI Payment Simulation / Spring Boot Backend</p>
+          </div>
+          
+          <p class="project-card-desc">
+            Offline UPI payment simulation using Spring Boot and a Bluetooth-style mesh network, demonstrating encrypted payment propagation, bridge synchronization, idempotency, and transactional settlement.
+          </p>
+
+          <div class="project-tags-cloud">
+            <span class="tech-chip">Java 17</span>
+            <span class="tech-chip">Spring Boot</span>
+            <span class="tech-chip">JPA</span>
+            <span class="tech-chip">H2</span>
+            <span class="tech-chip">REST API</span>
+            <span class="tech-chip">Thymeleaf</span>
+            <span class="tech-chip">Maven</span>
+          </div>
+
+          <ul class="project-feature-list">
+            <li><span class="feat-dot">✦</span> Encrypted mesh payment packets</li>
+            <li><span class="feat-dot">✦</span> Bluetooth mesh gossip propagation</li>
+            <li><span class="feat-dot">✦</span> SHA-256 idempotency &amp; settlement</li>
+            <li><span class="feat-dot">✦</span> Bridge synchronization &amp; locking</li>
+          </ul>
+
+          <div class="project-card-actions">
+            <a href="https://github.com/tech-area52/Recent-Projects/tree/main/UPI_Without_Internet" target="_blank" rel="noopener noreferrer" class="project-action-btn btn-github" title="View UPI Without Internet on GitHub" aria-label="View UPI Without Internet on GitHub">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+              <span>GitHub</span>
+              <span class="btn-arrow">↗</span>
+            </a>
+            <button type="button" class="project-action-btn btn-demo disabled" disabled title="Live Demo Coming Soon (URL: #LIVE_DEMO_URL#)" aria-label="Live Demo Coming Soon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+              <span>Live Demo</span>
+              <span class="btn-status-badge">Soon</span>
+            </button>
+            <button type="button" class="project-action-btn btn-details" data-modal="upi-mesh" title="View Details for UPI Without Internet" aria-label="View Details for UPI Without Internet">
               <span>View Details</span>
               <span class="btn-arrow">→</span>
             </button>
@@ -699,6 +749,7 @@
       <span class="suggestions-label">💡 Suggested Questions:</span>
       <div class="suggestions-scroll">
         <button type="button" class="suggestion-chip" data-question="What technologies does Shivendra know?">☕ Java Stack</button>
+        <button type="button" class="suggestion-chip" data-question="Tell me about the UPI Without Internet project.">⚡ Offline UPI</button>
         <button type="button" class="suggestion-chip" data-question="Tell me about the ExamPrep project.">🚀 ExamPrep</button>
         <button type="button" class="suggestion-chip" data-question="Tell me about his internship at SDAC Infotech.">🏢 SDAC Internship</button>
         <button type="button" class="suggestion-chip" data-question="What is Shivendra's education and CGPA?">🎓 8.5 CGPA Education</button>
@@ -770,8 +821,8 @@
     </div>
   </div>
 
-  <script src="js/app.js?v=2.0.0"></script>
-  <script src="js/contact.js?v=2.0.0"></script>
-  <script src="js/chatbot.js?v=2.0.0"></script>
+  <script src="js/app.js?v=2.1.0"></script>
+  <script src="js/contact.js?v=2.1.0"></script>
+  <script src="js/chatbot.js?v=2.1.0"></script>
 </body>
 </html>
