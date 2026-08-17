@@ -63,10 +63,49 @@ function generateEmailHtml({ name, email, subject, message, timestamp }) {
   `;
 }
 
+let nodemailer = null;
+try {
+  nodemailer = require('nodemailer');
+} catch (e) {
+  // Optional in environments where nodemailer is not installed
+}
+
 async function forwardMessage({ name, email, subject, message, timestamp }) {
   const receiverEmail = (process.env.CONTACT_EMAIL || 'guptashivendra697@gmail.com').trim();
 
-  // 1. Resend API (If configured)
+  // 1. Direct Gmail SMTP via Nodemailer (Direct inbox delivery, 0% spam)
+  const smtpUser = (process.env.SMTP_USER || process.env.GMAIL_USER || '').trim();
+  const smtpPass = (process.env.SMTP_PASS || process.env.GMAIL_APP_PASS || '').trim().replace(/\s+/g, '');
+  if (nodemailer && smtpUser && smtpPass) {
+    try {
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: smtpUser,
+          pass: smtpPass
+        }
+      });
+
+      await transporter.sendMail({
+        from: `"${name} via Portfolio" <${smtpUser}>`,
+        to: receiverEmail || smtpUser,
+        replyTo: email,
+        subject: `[Portfolio Contact] ${subject || 'New Message from ' + name}`,
+        text: `New Message from Portfolio:\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject || 'General Inquiry'}\nDate: ${timestamp}\n\nMessage:\n${message}`,
+        html: generateEmailHtml({ name, email, subject, message, timestamp })
+      });
+
+      return {
+        delivered: true,
+        provider: 'smtp',
+        message: 'Thank you! Your message has been sent directly to Shivendra.'
+      };
+    } catch (smtpErr) {
+      console.warn('Direct SMTP forwarding failed:', smtpErr.message);
+    }
+  }
+
+  // 2. Resend API (If configured in Vercel Environment Variables)
   if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY.trim()) {
     try {
       const res = await fetch('https://api.resend.com/emails', {
@@ -95,7 +134,7 @@ async function forwardMessage({ name, email, subject, message, timestamp }) {
     }
   }
 
-  // 2. FormSubmit AJAX forwarding
+  // 3. FormSubmit AJAX forwarding (Zero-configuration gateway)
   try {
     const formSubmitRes = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(receiverEmail)}`, {
       method: 'POST',
@@ -109,10 +148,12 @@ async function forwardMessage({ name, email, subject, message, timestamp }) {
       body: JSON.stringify({
         name,
         email,
+        _replyto: email,
         _subject: `[Portfolio Contact] ${subject || 'New Message from ' + name}`,
         message,
         timestamp,
-        _template: 'table'
+        _template: 'table',
+        _captcha: 'false'
       })
     });
 
@@ -124,7 +165,7 @@ async function forwardMessage({ name, email, subject, message, timestamp }) {
         delivered: true,
         provider: 'formsubmit',
         message: isActivation
-          ? 'Message received! Note: FormSubmit sent an activation link to the inbox. Please click it once to confirm.'
+          ? 'Message received! Please check your Gmail (including Spam folder) for a one-time FormSubmit activation link.'
           : 'Thank you! Your message has been sent successfully. Shivendra will get back to you soon.'
       };
     }
@@ -135,7 +176,7 @@ async function forwardMessage({ name, email, subject, message, timestamp }) {
   return {
     delivered: true,
     provider: 'fallback',
-    message: 'Thank you! Your message has been recorded. Shivendra will get back to you soon.'
+    message: 'Thank you! Your message has been received.'
   };
 }
 
