@@ -224,7 +224,8 @@
         "Optimistic locking concurrency protection"
       ],
       "architecture": "Mesh Gossip Simulation → HTTPS POST Bridge Upload → Spring Boot Backend (SHA-256 Idempotency → Decrypt & Validate → Atomic Settlement → Immutable Ledger)",
-      "gitHub": "https://github.com/tech-area52/Recent-Projects/tree/main/UPI_Without_Internet"
+      "gitHub": "https://github.com/tech-area52/Recent-Projects/tree/main/UPI_Without_Internet",
+      "liveDemo": "https://recent-projects-production-cede.up.railway.app"
     }
   ],
   "myProcess": [

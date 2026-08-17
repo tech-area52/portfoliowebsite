@@ -217,7 +217,7 @@ function handleLocalKnowledgeFallback(message) {
 
   if (text.includes('upi') || text.includes('offline upi') || text.includes('mesh') || text.includes('idempotency') || text.includes('without internet')) {
     const p = profileData.projects.find(pr => pr.name.toLowerCase().includes('upi')) || profileData.projects[3];
-    return `**${p.name}** (${p.subtitle}):\n\n${p.description}\n\n• **Technologies**: ${p.technologies.join(', ')}\n• **Key Features**: ${p.features.join(', ')}\n• **Architecture**: \`${p.architecture}\`\n\nCheck out the repository on [GitHub](${p.gitHub || profileData.contact.gitHub}).`;
+    return `**${p.name}** (${p.subtitle}):\n\n${p.description}\n\n• **Technologies**: ${p.technologies.join(', ')}\n• **Key Features**: ${p.features.join(', ')}\n• **Architecture**: \`${p.architecture}\`\n\nCheck out the repository on [GitHub](${p.gitHub || profileData.contact.gitHub})${p.liveDemo ? ` and explore the [Live Demo](${p.liveDemo})` : ''}.`;
   }
 
   // 18. Projects in general

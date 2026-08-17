@@ -472,7 +472,7 @@
           { title: 'Mesh Simulation', desc: 'Simulates peer-to-peer gossip propagation without requiring active internet.' }
         ],
         github: 'https://github.com/tech-area52/Recent-Projects/tree/main/UPI_Without_Internet',
-        demoUrl: '#LIVE_DEMO_URL#'
+        demoUrl: 'https://recent-projects-production-cede.up.railway.app'
       }
     };
 
