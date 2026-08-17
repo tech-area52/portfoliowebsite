@@ -621,11 +621,16 @@
 
         <!-- Right Column: Interactive Professional Contact Form -->
         <div class="contact-form-col">
-          <form id="contact-form" class="portfolio-contact-form" novalidate>
+          <form action="https://formsubmit.co/guptashivendra697@gmail.com" method="POST" id="contact-form" class="portfolio-contact-form">
             <div class="form-header">
               <h3 class="form-title">Send a Message</h3>
               <p class="form-subtitle">Fill in the details below and I'll get back to you soon.</p>
             </div>
+
+            <!-- Hidden FormSubmit Configurations -->
+            <input type="hidden" name="_subject" value="New Portfolio Contact">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
 
             <!-- Status Alert Banner -->
             <div id="contact-status" class="contact-status-banner" style="display: none;" aria-live="polite"></div>
