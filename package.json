@@ -5,15 +5,14 @@
   "description": "Shivendra Gupta - Full-Stack Java Developer Portfolio",
   "scripts": {
     "start": "node server.js",
+    "build": "node data/generate-pdf.js",
     "build:pdf": "node data/generate-pdf.js"
   },
   "keywords": [],
   "author": "Shivendra Gupta",
   "license": "ISC",
   "dependencies": {
-    "nodemailer": "^9.0.5"
-  },
-  "devDependencies": {
+    "nodemailer": "^9.0.5",
     "pdfkit": "^0.19.1"
   }
 }
