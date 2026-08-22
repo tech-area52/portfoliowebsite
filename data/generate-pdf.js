@@ -1,6 +1,6 @@
 /**
- * Generates an exact, pixel-perfect 1-page PDF Resume matching Shivendra Gupta's Google Doc resume.
- * Uses PDFKit with accurate typography, vector icons, hyperlinks, and ATS-friendly layout.
+ * Generates an exact, crystal-clear 1-page PDF Resume matching Shivendra Gupta's Google Doc resume.
+ * Uses native PDFKit vector geometry, proper Helvetica encoding, crisp circular bullets, and clickable hyperlinks.
  */
 const fs = require('fs');
 const path = require('path');
@@ -9,10 +9,10 @@ const PDFDocument = require('pdfkit');
 function generatePixelPerfectResume() {
   const outputPath = path.join(__dirname, '..', 'Shivendra_Gupta_Resume.pdf');
   
-  // Create A4 document with balanced margins
+  // Create A4 document with 40pt top/bottom, 42pt left/right
   const doc = new PDFDocument({
     size: 'A4', // 595.28 x 841.89 pt
-    margins: { top: 40, bottom: 40, left: 45, right: 45 },
+    margins: { top: 38, bottom: 38, left: 42, right: 42 },
     autoFirstPage: true,
     info: {
       Title: 'Shivendra Gupta - Resume',
@@ -25,9 +25,9 @@ function generatePixelPerfectResume() {
   const writeStream = fs.createWriteStream(outputPath);
   doc.pipe(writeStream);
 
-  const leftX = 45;
-  const rightX = 550;
-  const contentWidth = rightX - leftX; // 505 pt
+  const leftX = 42;
+  const rightX = 553.28;
+  const contentWidth = rightX - leftX; // 511.28 pt
 
   // Helper: Draw clean horizontal rule
   function drawDivider(y, color = '#5c768d', lineWidth = 0.75) {
@@ -40,162 +40,83 @@ function generatePixelPerfectResume() {
        .restore();
   }
 
-  // Vector Icon Helpers for Header
-  function drawPinIcon(x, y) {
+  // Helper: Draw crisp bullet dot
+  function drawBullet(x, y, radius = 2.0, color = '#000000') {
     doc.save()
-       .strokeColor('#dc2626')
-       .fillColor('#dc2626')
-       .circle(x + 4, y + 4, 3)
+       .fillColor(color)
+       .circle(x, y, radius)
        .fill()
-       .moveTo(x + 1.5, y + 5)
-       .lineTo(x + 4, y + 9)
-       .lineTo(x + 6.5, y + 5)
-       .fill()
-       .fillColor('#ffffff')
-       .circle(x + 4, y + 4, 1.2)
-       .fill()
-       .restore();
-  }
-
-  function drawPhoneIcon(x, y) {
-    doc.save()
-       .strokeColor('#1e293b')
-       .fillColor('#1e293b')
-       .roundedRect(x + 1, y + 1, 6.5, 9.5, 1.5)
-       .fill()
-       .fillColor('#ffffff')
-       .rect(x + 2, y + 2.5, 4.5, 6)
-       .fill()
-       .fillColor('#ffffff')
-       .circle(x + 4.25, y + 9.2, 0.6)
-       .fill()
-       .restore();
-  }
-
-  function drawMailIcon(x, y) {
-    doc.save()
-       .strokeColor('#2563eb')
-       .fillColor('#2563eb')
-       .roundedRect(x + 0.5, y + 1.5, 9, 7, 1)
-       .fill()
-       .strokeColor('#ffffff')
-       .lineWidth(0.8)
-       .moveTo(x + 1.5, y + 2.5)
-       .lineTo(x + 5, y + 5.2)
-       .lineTo(x + 8.5, y + 2.5)
-       .stroke()
-       .restore();
-  }
-
-  function drawBriefcaseIcon(x, y) {
-    doc.save()
-       .strokeColor('#0284c7')
-       .fillColor('#0284c7')
-       .roundedRect(x + 0.5, y + 2.5, 9, 6.5, 1)
-       .fill()
-       .strokeColor('#0284c7')
-       .lineWidth(0.8)
-       .moveTo(x + 3, y + 2.5)
-       .lineTo(x + 3, y + 1)
-       .lineTo(x + 7, y + 1)
-       .lineTo(x + 7, y + 2.5)
-       .stroke()
-       .restore();
-  }
-
-  function drawCodeIcon(x, y) {
-    doc.save()
-       .strokeColor('#334155')
-       .fillColor('#334155')
-       .roundedRect(x + 0.5, y + 1.5, 9, 6.5, 1)
-       .fill()
-       .strokeColor('#334155')
-       .lineWidth(1)
-       .moveTo(x + 0.5, y + 8.5)
-       .lineTo(x + 9.5, y + 8.5)
-       .stroke()
-       .restore();
-  }
-
-  function drawGlobeIcon(x, y) {
-    doc.save()
-       .strokeColor('#0d9488')
-       .lineWidth(0.8)
-       .circle(x + 4.5, y + 5, 4)
-       .stroke()
-       .moveTo(x + 0.5, y + 5)
-       .lineTo(x + 8.5, y + 5)
-       .stroke()
-       .ellipse(x + 4.5, y + 5, 2, 4)
-       .stroke()
        .restore();
   }
 
   // --- 1. HEADER ---
   doc.font('Helvetica-Bold')
-     .fontSize(18)
+     .fontSize(17)
      .fillColor('#000000')
-     .text('SHIVENDRA GUPTA', leftX, 40, { characterSpacing: 0.5 });
+     .text('SHIVENDRA GUPTA', leftX, 38, { characterSpacing: 0.3 });
 
   doc.moveDown(0.35);
 
   // Line 1: Location | Phone | Email
-  let curY = doc.y;
-  drawPinIcon(leftX, curY);
-  
+  const line1Y = doc.y;
   doc.font('Helvetica')
      .fontSize(9.5)
-     .fillColor('#000000')
-     .text('  Bhayander East, Thane, Maharashtra  |  ', leftX + 10, curY, { continued: true });
+     .fillColor('#000000');
 
-  const phoneX = doc.x;
-  drawPhoneIcon(phoneX, curY);
-  doc.text('   +91 9372670012  |  ', phoneX + 11, curY, { continued: true });
-
-  const mailX = doc.x;
-  drawMailIcon(mailX, curY);
+  const locPhoneText = 'Bhayander East, Thane, Maharashtra   |   +91 9372670012   |   ';
+  const locPhoneWidth = doc.widthOfString(locPhoneText);
+  
+  doc.text(locPhoneText, leftX, line1Y, { continued: false });
+  
   doc.fillColor('#1155cc')
-     .text('   guptashivendra697@gmail.com', mailX + 12, curY, {
+     .text('guptashivendra697@gmail.com', leftX + locPhoneWidth, line1Y, {
        link: 'mailto:guptashivendra697@gmail.com',
        underline: true,
        continued: false
      });
 
-  doc.moveDown(0.25);
-  drawDivider(doc.y, '#5c768d', 1.0);
-  doc.moveDown(0.3);
+  doc.y = line1Y + 14;
+  drawDivider(doc.y, '#5c768d', 0.85);
+  doc.moveDown(0.32);
 
   // Line 2: LinkedIn | GitHub | Portfolio
-  curY = doc.y;
-  drawBriefcaseIcon(leftX, curY);
+  const linksY = doc.y;
   doc.font('Helvetica')
-     .fontSize(9.5)
-     .fillColor('#1155cc')
-     .text('  LinkedIn', leftX + 11, curY, { link: 'https://www.linkedin.com/in/shivendraguptatech', underline: true, continued: true });
-  
-  doc.fillColor('#000000')
-     .text('  |  ', { underline: false, continued: true });
+     .fontSize(9.5);
 
-  const ghX = doc.x;
-  drawCodeIcon(ghX, curY);
+  // LinkedIn
   doc.fillColor('#1155cc')
-     .text('   GitHub', ghX + 11, curY, { link: 'https://github.com/tech-area52', underline: true, continued: true });
+     .text('LinkedIn', leftX, linksY, { link: 'https://www.linkedin.com/in/shivendraguptatech', underline: true });
+  const linkedInWidth = doc.widthOfString('LinkedIn');
 
+  // Separator 1
   doc.fillColor('#000000')
-     .text('  |  ', { underline: false, continued: true });
+     .text('   |   ', leftX + linkedInWidth, linksY, { underline: false });
+  const sep1Width = doc.widthOfString('   |   ');
 
-  const portX = doc.x;
-  drawGlobeIcon(portX, curY);
+  // GitHub
+  const ghX = leftX + linkedInWidth + sep1Width;
   doc.fillColor('#1155cc')
-     .text('   Portfolio', portX + 11, curY, { link: 'https://tech-area52.vercel.app', underline: true, continued: false });
+     .text('GitHub', ghX, linksY, { link: 'https://github.com/tech-area52', underline: true });
+  const ghWidth = doc.widthOfString('GitHub');
 
-  doc.moveDown(0.22);
+  // Separator 2
+  doc.fillColor('#000000')
+     .text('   |   ', ghX + ghWidth, linksY, { underline: false });
+  const sep2Width = doc.widthOfString('   |   ');
+
+  // Portfolio
+  const portX = ghX + ghWidth + sep2Width;
+  doc.fillColor('#1155cc')
+     .text('Portfolio', portX, linksY, { link: 'https://portfoliowebsite-delta-ten.vercel.app', underline: true });
+
+  doc.y = linksY + 14;
 
   // Line 3: Languages
   doc.font('Helvetica')
      .fontSize(9.5)
      .fillColor('#000000')
-     .text('Languages: English, Hindi, Marathi', leftX);
+     .text('Languages: English, Hindi, Marathi', leftX, doc.y);
 
   doc.moveDown(0.45);
 
@@ -236,23 +157,31 @@ function generatePixelPerfectResume() {
   doc.moveDown(0.35);
 
   const skills = [
-    { label: 'Programming: ', val: 'Java (Core Java), Python (Basic), JavaScript (Basic)' },
-    { label: 'Backend: ', val: 'Spring Boot, RESTful APIs' },
-    { label: 'Frontend: ', val: 'HTML5, CSS, Bootstrap' },
-    { label: 'Databases: ', val: 'MySQL, SQL, MongoDB (Basic)' },
-    { label: 'Tools: ', val: 'Git, GitHub, MS Office, QGIS, SPSS, Canva' }
+    { label: 'Programming:', val: ' Java (Core Java), Python (Basic), JavaScript (Basic)' },
+    { label: 'Backend:', val: ' Spring Boot, RESTful APIs' },
+    { label: 'Frontend:', val: ' HTML5, CSS, Bootstrap' },
+    { label: 'Databases:', val: ' MySQL, SQL, MongoDB (Basic)' },
+    { label: 'Tools:', val: ' Git, GitHub, MS Office, QGIS, SPSS, Canva' }
   ];
 
   skills.forEach(s => {
-    const y = doc.y;
+    const curY = doc.y;
+    // Draw clean vector bullet dot
+    drawBullet(leftX + 4, curY + 5, 2.0);
+
     doc.font('Helvetica-Bold')
        .fontSize(9.2)
+       .fillColor('#000000');
+    const labelWidth = doc.widthOfString(s.label);
+    doc.text(s.label, leftX + 13, curY, { continued: false });
+
+    doc.font('Helvetica')
        .fillColor('#000000')
-       .text('●  ', leftX + 4, y, { continued: true })
-       .text(s.label, { continued: true })
-       .font('Helvetica')
-       .fillColor('#000000')
-       .text(s.val);
+       .text(s.val, leftX + 13 + labelWidth, curY, {
+         width: contentWidth - 13 - labelWidth,
+         lineGap: 1.5
+       });
+
     doc.moveDown(0.2);
   });
 
@@ -283,15 +212,14 @@ function generatePixelPerfectResume() {
   ];
 
   experienceBullets.forEach(b => {
-    const y = doc.y;
-    doc.font('Helvetica-Bold')
+    const curY = doc.y;
+    drawBullet(leftX + 4, curY + 5, 2.0);
+
+    doc.font('Helvetica')
        .fontSize(9.2)
        .fillColor('#000000')
-       .text('●  ', leftX + 4, y, { continued: true })
-       .font('Helvetica')
-       .fillColor('#000000')
-       .text(b, {
-         width: contentWidth - 14,
+       .text(b, leftX + 13, curY, {
+         width: contentWidth - 13,
          lineGap: 1.8
        });
     doc.moveDown(0.2);
@@ -309,52 +237,76 @@ function generatePixelPerfectResume() {
   drawDivider(doc.y, '#5c768d', 0.65);
   doc.moveDown(0.35);
 
-  // Edu 1: Bachelor of CS
-  let eduY = doc.y;
+  // Edu 1: Bachelor of Computer Science
+  let curEduY = doc.y;
+  drawBullet(leftX + 4, curEduY + 5, 2.0);
+
   doc.font('Helvetica-Bold')
      .fontSize(9.2)
-     .fillColor('#000000')
-     .text('●  ', leftX + 4, eduY, { continued: true })
-     .text('Bachelor of Computer Science', { continued: true })
-     .font('Helvetica')
-     .fillColor('#000000')
-     .text(' — Thakur Ramnarayan College of Arts and Commerce | ', { continued: true })
-     .font('Helvetica-Bold')
-     .fillColor('#000000')
-     .text('CGPA: 8.5');
+     .fillColor('#000000');
+  const d1 = 'Bachelor of Computer Science';
+  const w1 = doc.widthOfString(d1);
+  doc.text(d1, leftX + 13, curEduY, { continued: false });
 
-  doc.moveDown(0.22);
+  doc.font('Helvetica')
+     .fillColor('#000000');
+  const i1 = ' — Thakur Ramnarayan College of Arts and Commerce | ';
+  const wi1 = doc.widthOfString(i1);
+  doc.text(i1, leftX + 13 + w1, curEduY, { continued: false });
+
+  doc.font('Helvetica-Bold')
+     .fillColor('#000000')
+     .text('CGPA: 8.5', leftX + 13 + w1 + wi1, curEduY, { continued: false });
+
+  doc.y = curEduY + 13;
+  doc.moveDown(0.18);
 
   // Edu 2: HSC
-  eduY = doc.y;
+  curEduY = doc.y;
+  drawBullet(leftX + 4, curEduY + 5, 2.0);
+
   doc.font('Helvetica-Bold')
      .fontSize(9.2)
-     .fillColor('#000000')
-     .text('●  ', leftX + 4, eduY, { continued: true })
-     .text('Higher Secondary Certificate (HSC)', { continued: true })
-     .font('Helvetica')
-     .fillColor('#000000')
-     .text(' — Mother Mary Junior College of Arts, Science and Commerce | ', { continued: true })
-     .font('Helvetica-Bold')
-     .fillColor('#000000')
-     .text('54.46%');
+     .fillColor('#000000');
+  const d2 = 'Higher Secondary Certificate (HSC)';
+  const w2 = doc.widthOfString(d2);
+  doc.text(d2, leftX + 13, curEduY, { continued: false });
 
-  doc.moveDown(0.22);
+  doc.font('Helvetica')
+     .fillColor('#000000');
+  const i2 = ' — Mother Mary Junior College of Arts, Science and Commerce | ';
+  const wi2 = doc.widthOfString(i2);
+  doc.text(i2, leftX + 13 + w2, curEduY, { continued: false });
+
+  doc.font('Helvetica-Bold')
+     .fillColor('#000000')
+     .text('54.46%', leftX + 13 + w2 + wi2, curEduY, { continued: false });
+
+  doc.y = curEduY + 13;
+  doc.moveDown(0.18);
 
   // Edu 3: SSC
-  eduY = doc.y;
+  curEduY = doc.y;
+  drawBullet(leftX + 4, curEduY + 5, 2.0);
+
   doc.font('Helvetica-Bold')
      .fontSize(9.2)
-     .fillColor('#000000')
-     .text('●  ', leftX + 4, eduY, { continued: true })
-     .text('Secondary School Certificate (SSC)', { continued: true })
-     .font('Helvetica')
-     .fillColor('#000000')
-     .text(' — K.B. Narawat High School | ', { continued: true })
-     .font('Helvetica-Bold')
-     .fillColor('#000000')
-     .text('67.80%');
+     .fillColor('#000000');
+  const d3 = 'Secondary School Certificate (SSC)';
+  const w3 = doc.widthOfString(d3);
+  doc.text(d3, leftX + 13, curEduY, { continued: false });
 
+  doc.font('Helvetica')
+     .fillColor('#000000');
+  const i3 = ' — K.B. Narawat High School | ';
+  const wi3 = doc.widthOfString(i3);
+  doc.text(i3, leftX + 13 + w3, curEduY, { continued: false });
+
+  doc.font('Helvetica-Bold')
+     .fillColor('#000000')
+     .text('67.80%', leftX + 13 + w3 + wi3, curEduY, { continued: false });
+
+  doc.y = curEduY + 13;
   doc.moveDown(0.35);
 
   // --- 6. CERTIFICATIONS & TRAINING ---
@@ -368,44 +320,52 @@ function generatePixelPerfectResume() {
   doc.moveDown(0.35);
 
   // Cert 1: Campus to Corporate
-  let certY = doc.y;
+  let curCertY = doc.y;
+  drawBullet(leftX + 4, curCertY + 5, 2.0);
+
   doc.font('Helvetica-Bold')
      .fontSize(9.2)
-     .fillColor('#000000')
-     .text('●  ', leftX + 4, certY, { continued: true })
-     .text('Campus to Corporate Career Training', { continued: true })
-     .font('Helvetica')
-     .fillColor('#000000')
-     .text(' — TNS India Foundation');
+     .fillColor('#000000');
+  const c1 = 'Campus to Corporate Career Training';
+  const wc1 = doc.widthOfString(c1);
+  doc.text(c1, leftX + 13, curCertY, { continued: false });
 
-  doc.moveDown(0.15);
+  doc.font('Helvetica')
+     .fillColor('#000000')
+     .text(' — TNS India Foundation', leftX + 13 + wc1, curCertY, { continued: false });
+
+  doc.y = curCertY + 12.5;
   doc.font('Helvetica')
      .fontSize(8.8)
-     .fillColor('#222222')
-     .text('Training in business communication, corporate workplace dynamics, and professional effectiveness.', leftX + 16, doc.y, {
-       width: contentWidth - 16,
+     .fillColor('#1f2937')
+     .text('Training in business communication, corporate workplace dynamics, and professional effectiveness.', leftX + 13, doc.y, {
+       width: contentWidth - 13,
        lineGap: 1.5
      });
 
   doc.moveDown(0.28);
 
   // Cert 2: Android App Development
-  certY = doc.y;
+  curCertY = doc.y;
+  drawBullet(leftX + 4, curCertY + 5, 2.0);
+
   doc.font('Helvetica-Bold')
      .fontSize(9.2)
-     .fillColor('#000000')
-     .text('●  ', leftX + 4, certY, { continued: true })
-     .text('Android App Development using Kotlin', { continued: true })
-     .font('Helvetica')
-     .fillColor('#000000')
-     .text(' — IIT Bombay (2025–2026)');
+     .fillColor('#000000');
+  const c2 = 'Android App Development using Kotlin';
+  const wc2 = doc.widthOfString(c2);
+  doc.text(c2, leftX + 13, curCertY, { continued: false });
 
-  doc.moveDown(0.15);
+  doc.font('Helvetica')
+     .fillColor('#000000')
+     .text(' — IIT Bombay (2025–2026)', leftX + 13 + wc2, curCertY, { continued: false });
+
+  doc.y = curCertY + 12.5;
   doc.font('Helvetica')
      .fontSize(8.8)
-     .fillColor('#222222')
-     .text('Learned core mobile application architecture and built native Android user interfaces using Kotlin.', leftX + 16, doc.y, {
-       width: contentWidth - 16,
+     .fillColor('#1f2937')
+     .text('Learned core mobile application architecture and built native Android user interfaces using Kotlin.', leftX + 13, doc.y, {
+       width: contentWidth - 13,
        lineGap: 1.5
      });
 
@@ -413,7 +373,7 @@ function generatePixelPerfectResume() {
   doc.end();
 
   writeStream.on('finish', () => {
-    console.log('✅ Pixel-Perfect Shivendra_Gupta_Resume.pdf successfully generated!');
+    console.log('✅ Crystal-Clear Shivendra_Gupta_Resume.pdf successfully generated!');
   });
 }
 
