@@ -293,7 +293,7 @@
     }
 
     // 2. ScrollSpy - Dynamic Active Section Highlighting
-    const sectionIds = ['home', 'skills', 'process', 'projects', 'about', 'contact'];
+    const sectionIds = ['home', 'skills', 'experience', 'projects', 'process', 'about', 'contact'];
     const sections = sectionIds
       .map(id => ({ id, el: document.getElementById(id) }))
       .filter(s => s.el !== null);
@@ -690,12 +690,59 @@
   }
 
   /**
+   * Setup Resume Quick Preview Modal
+   */
+  function setupResumeModal() {
+    const modal = document.getElementById('resume-modal');
+    const triggerBtn = document.getElementById('trigger-resume-modal');
+    const closeBtn = document.getElementById('resume-modal-close');
+
+    if (!modal) return;
+
+    function openResumeModal() {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeResumeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    if (triggerBtn) {
+      triggerBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openResumeModal();
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeResumeModal);
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeResumeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        closeResumeModal();
+      }
+    });
+  }
+
+  /**
    * Initialize
    */
   function init() {
     setupSmoothScroll();
     setupNavbar();
     setupProjectModal();
+    setupResumeModal();
     handleResize();
     window.addEventListener('resize', handleResize, { passive: true });
     window.addEventListener('scroll', updateScroll, { passive: true });

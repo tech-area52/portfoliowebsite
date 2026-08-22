@@ -1,70 +1,101 @@
 /**
- * Generates a clean, valid, professional 1-page PDF Resume for Shivendra Gupta
+ * Generates a clean, valid, professional 1-page PDF Resume matching Shivendra Gupta's updated resume
  */
 const fs = require('fs');
 const path = require('path');
 
 function createResumePdf() {
-  const contentLines = [
-    { text: "SHIVENDRA GUPTA", size: 18, bold: true, y: 790 },
-    { text: "Bhayander East, Thane, Maharashtra | +91 9372670012 | guptashivendra697@gmail.com", size: 10, y: 772 },
-    { text: "Languages: English, Hindi, Marathi | LinkedIn: shivendraguptatech | GitHub: tech-area52", size: 10, y: 758 },
+  // Page height: 842pt (A4), width: 595pt
+  // Margin left: 45pt, right: 550pt (width: 505pt)
+  const leftX = 45;
+  const lineEndX = 550;
 
-    { text: "------------------------------------------------------------------------------------------------------------------------------------------------", size: 8, y: 746 },
-    { text: "PROFESSIONAL SUMMARY", size: 12, bold: true, y: 732 },
-    { text: "Bachelor of Computer Science graduate with hands-on experience in Java, Spring Boot, RESTful APIs, HTML, CSS, Bootstrap,", size: 9.5, y: 718 },
-    { text: "SQL, and MySQL. Experienced in application development, responsive UI development, database integration, and Git/GitHub-based", size: 9.5, y: 706 },
-    { text: "source control. Seeking an entry-level Software Developer role to build reliable applications and contribute to a development team.", size: 9.5, y: 694 },
+  // We will build drawing commands & text stream
+  let stream = "";
 
-    { text: "------------------------------------------------------------------------------------------------------------------------------------------------", size: 8, y: 682 },
-    { text: "TECHNICAL SKILLS", size: 12, bold: true, y: 668 },
-    { text: "• Programming: Java (Core Java), Python (Basic), JavaScript (Basic)", size: 9.5, y: 654 },
-    { text: "• Backend: Spring Boot, RESTful APIs, Spring MVC, Spring Data JPA, Hibernate, JDBC", size: 9.5, y: 642 },
-    { text: "• Frontend: HTML5, CSS3, Bootstrap, JavaScript", size: 9.5, y: 630 },
-    { text: "• Databases: MySQL, SQL, MongoDB (Basic)", size: 9.5, y: 618 },
-    { text: "• Tools: Git, GitHub, Postman, IntelliJ IDEA, Eclipse, MS Office, QGIS, SPSS, Canva", size: 9.5, y: 606 },
-    { text: "• Core Concepts: Object-Oriented Programming (OOP), MVC Architecture, CRUD Operations, DSA", size: 9.5, y: 594 },
+  // Helper for drawing horizontal rule
+  function drawLine(y) {
+    stream += `q 0.8 0.8 0.85 RG 0.75 w ${leftX} ${y} m ${lineEndX} ${y} l S Q\n`;
+  }
 
-    { text: "------------------------------------------------------------------------------------------------------------------------------------------------", size: 8, y: 582 },
-    { text: "WORK EXPERIENCE", size: 12, bold: true, y: 568 },
-    { text: "Software Development Intern | SDAC Infotech, Mumbai", size: 10.5, bold: true, y: 554 },
-    { text: "• Assisted in developing hybrid applications integrated with Generative AI tools to improve user interactivity.", size: 9.5, y: 540 },
-    { text: "• Built responsive, multi-device user interfaces using HTML, CSS, Bootstrap, and Java.", size: 9.5, y: 528 },
-    { text: "• Worked with SQL and MySQL for relational database management, backend data retrieval, and integration.", size: 9.5, y: 516 },
-    { text: "• Used Git and GitHub for source code management, version tracking, and collaboration on code features.", size: 9.5, y: 504 },
+  const content = [
+    // Header
+    { text: "SHIVENDRA GUPTA", font: "/F2", size: 20, x: leftX, y: 795, color: "0.08 0.08 0.12 rg" },
+    { text: "Bhayander East, Thane, Maharashtra   |   +91 9372670012   |   guptashivendra697@gmail.com", font: "/F1", size: 9.5, x: leftX, y: 775, color: "0.2 0.2 0.25 rg" },
+    { text: "LinkedIn: shivendraguptatech   |   GitHub: tech-area52   |   Portfolio: tech-area52.vercel.app", font: "/F1", size: 9.5, x: leftX, y: 760, color: "0.2 0.2 0.25 rg" },
+    { text: "Languages: English, Hindi, Marathi", font: "/F1", size: 9.5, x: leftX, y: 745, color: "0.25 0.25 0.3 rg" },
 
-    { text: "------------------------------------------------------------------------------------------------------------------------------------------------", size: 8, y: 492 },
-    { text: "PROJECTS", size: 12, bold: true, y: 478 },
-    { text: "Student Management System (Spring Boot, Spring Data JPA, MySQL, REST API, Postman)", size: 10, bold: true, y: 464 },
-    { text: "• Built complete CRUD backend with Controller -> Service -> Repository -> Database layered architecture.", size: 9.5, y: 452 },
-    { text: "Nexus Finance API & Travelogue Portal (Java, Spring Boot, MySQL, REST APIs, JS)", size: 10, bold: true, y: 438 },
-    { text: "• Engineered secure financial transaction endpoints and interactive multi-tier full-stack application.", size: 9.5, y: 426 },
+    // Professional Summary
+    { rule: 735 },
+    { text: "PROFESSIONAL SUMMARY", font: "/F2", size: 11, x: leftX, y: 720, color: "0.08 0.08 0.12 rg" },
+    { text: "Bachelor of Computer Science graduate with hands-on experience in Java, Spring Boot, RESTful APIs,", font: "/F1", size: 9.2, x: leftX, y: 704, color: "0.2 0.2 0.2 rg" },
+    { text: "HTML, CSS, Bootstrap, SQL, and MySQL. Experienced in application development, responsive UI", font: "/F1", size: 9.2, x: leftX, y: 691, color: "0.2 0.2 0.2 rg" },
+    { text: "development, database integration, and Git/GitHub-based source control. Seeking an entry-level Software", font: "/F1", size: 9.2, x: leftX, y: 678, color: "0.2 0.2 0.2 rg" },
+    { text: "Developer role to build reliable applications and contribute to a development team.", font: "/F1", size: 9.2, x: leftX, y: 665, color: "0.2 0.2 0.2 rg" },
 
-    { text: "------------------------------------------------------------------------------------------------------------------------------------------------", size: 8, y: 414 },
-    { text: "EDUCATION", size: 12, bold: true, y: 400 },
-    { text: "• Bachelor of Computer Science (B.Sc. CS) | Thakur Ramnarayan College of Arts & Commerce (Mumbai University) - CGPA: 8.5 (2026)", size: 9.5, y: 386 },
-    { text: "• Higher Secondary Certificate (HSC) | Mother Mary Junior College of Arts, Science and Commerce - 54.46%", size: 9.5, y: 374 },
-    { text: "• Secondary School Certificate (SSC) | K.B. Narawat High School - 67.80%", size: 9.5, y: 362 },
+    // Technical Skills
+    { rule: 652 },
+    { text: "TECHNICAL SKILLS", font: "/F2", size: 11, x: leftX, y: 637, color: "0.08 0.08 0.12 rg" },
+    { text: "•  Programming: ", font: "/F2", size: 9.2, x: leftX, y: 621, color: "0.15 0.15 0.15 rg", inline: "Java (Core Java), Python (Basic), JavaScript (Basic)" },
+    { text: "•  Backend: ", font: "/F2", size: 9.2, x: leftX, y: 607, color: "0.15 0.15 0.15 rg", inline: "Spring Boot, RESTful APIs" },
+    { text: "•  Frontend: ", font: "/F2", size: 9.2, x: leftX, y: 593, color: "0.15 0.15 0.15 rg", inline: "HTML5, CSS, Bootstrap" },
+    { text: "•  Databases: ", font: "/F2", size: 9.2, x: leftX, y: 579, color: "0.15 0.15 0.15 rg", inline: "MySQL, SQL, MongoDB (Basic)" },
+    { text: "•  Tools: ", font: "/F2", size: 9.2, x: leftX, y: 565, color: "0.15 0.15 0.15 rg", inline: "Git, GitHub, MS Office, QGIS, SPSS, Canva" },
 
-    { text: "------------------------------------------------------------------------------------------------------------------------------------------------", size: 8, y: 350 },
-    { text: "CERTIFICATIONS & TRAINING", size: 12, bold: true, y: 336 },
-    { text: "• Android App Development using Kotlin — IIT Bombay (2025–2026)", size: 9.5, bold: true, y: 322 },
-    { text: "  Learned core mobile application architecture and built native Android user interfaces using Kotlin.", size: 9, y: 310 },
-    { text: "• Campus to Corporate Career Training — TNS India Foundation", size: 9.5, bold: true, y: 296 },
-    { text: "  Training in business communication, corporate workplace dynamics, and professional effectiveness.", size: 9, y: 284 }
+    // Work Experience
+    { rule: 552 },
+    { text: "WORK EXPERIENCE", font: "/F2", size: 11, x: leftX, y: 537, color: "0.08 0.08 0.12 rg" },
+    { text: "Software Development Intern  |  SDAC Infotech, Mumbai", font: "/F2", size: 9.8, x: leftX, y: 521, color: "0.1 0.1 0.15 rg" },
+    { text: "•  Assisted in developing hybrid applications integrated with Generative AI tools to improve user interactivity.", font: "/F1", size: 9.2, x: leftX, y: 506, color: "0.2 0.2 0.2 rg" },
+    { text: "•  Built responsive, multi-device user interfaces using HTML, CSS, Bootstrap, and Java.", font: "/F1", size: 9.2, x: leftX, y: 492, color: "0.2 0.2 0.2 rg" },
+    { text: "•  Worked with SQL and MySQL for relational database management, backend data retrieval, and integration.", font: "/F1", size: 9.2, x: leftX, y: 478, color: "0.2 0.2 0.2 rg" },
+    { text: "•  Used Git and GitHub for source code management, version tracking, and collaboration on code features.", font: "/F1", size: 9.2, x: leftX, y: 464, color: "0.2 0.2 0.2 rg" },
+
+    // Education
+    { rule: 450 },
+    { text: "EDUCATION", font: "/F2", size: 11, x: leftX, y: 435, color: "0.08 0.08 0.12 rg" },
+    { text: "•  Bachelor of Computer Science — Thakur Ramnarayan College of Arts and Commerce  |  CGPA: 8.5", font: "/F2", size: 9.2, x: leftX, y: 419, color: "0.12 0.12 0.15 rg" },
+    { text: "•  Higher Secondary Certificate (HSC) — Mother Mary Junior College of Arts, Science and Commerce  |  54.46%", font: "/F1", size: 9.2, x: leftX, y: 403, color: "0.2 0.2 0.2 rg" },
+    { text: "•  Secondary School Certificate (SSC) — K.B. Narawat High School  |  67.80%", font: "/F1", size: 9.2, x: leftX, y: 387, color: "0.2 0.2 0.2 rg" },
+
+    // Certifications & Training
+    { rule: 373 },
+    { text: "CERTIFICATIONS & TRAINING", font: "/F2", size: 11, x: leftX, y: 358, color: "0.08 0.08 0.12 rg" },
+    { text: "•  Campus to Corporate Career Training — TNS India Foundation", font: "/F2", size: 9.2, x: leftX, y: 342, color: "0.12 0.12 0.15 rg" },
+    { text: "   Training in business communication, corporate workplace dynamics, and professional effectiveness.", font: "/F1", size: 9.0, x: leftX, y: 328, color: "0.3 0.3 0.3 rg" },
+    { text: "•  Android App Development using Kotlin — IIT Bombay (2025–2026)", font: "/F2", size: 9.2, x: leftX, y: 310, color: "0.12 0.12 0.15 rg" },
+    { text: "   Learned core mobile application architecture and built native Android user interfaces using Kotlin.", font: "/F1", size: 9.0, x: leftX, y: 296, color: "0.3 0.3 0.3 rg" }
   ];
 
-  // Build PDF Stream
-  let stream = "BT\n";
-  contentLines.forEach(line => {
-    const font = line.bold ? "/F2" : "/F1";
-    stream += `${font} ${line.size} Tf\n`;
-    stream += `50 ${line.y} Td\n`;
-    const escaped = line.text.replace(/\\/g, '\\\\').replace(/\(/g, '\\(').replace(/\)/g, '\\)');
-    stream += `(${escaped}) Tj\n`;
-    stream += `-50 -${line.y} Td\n`;
+  function escapePdf(str) {
+    return str.replace(/\\/g, '\\\\').replace(/\(/g, '\\(').replace(/\)/g, '\\)');
+  }
+
+  content.forEach(item => {
+    if (item.rule) {
+      drawLine(item.rule);
+      return;
+    }
+
+    if (item.inline) {
+      // Bold title followed by regular text
+      stream += `BT\n`;
+      stream += `${item.color || '0 0 0 rg'}\n`;
+      stream += `${item.font} ${item.size} Tf\n`;
+      stream += `${item.x} ${item.y} Td\n`;
+      stream += `(${escapePdf(item.text)}) Tj\n`;
+      stream += `/F1 ${item.size} Tf\n`;
+      stream += `(${escapePdf(item.inline)}) Tj\n`;
+      stream += `ET\n`;
+    } else {
+      stream += `BT\n`;
+      stream += `${item.color || '0 0 0 rg'}\n`;
+      stream += `${item.font} ${item.size} Tf\n`;
+      stream += `${item.x} ${item.y} Td\n`;
+      stream += `(${escapePdf(item.text)}) Tj\n`;
+      stream += `ET\n`;
+    }
   });
-  stream += "ET\n";
 
   const streamLength = Buffer.byteLength(stream);
 
@@ -95,7 +126,7 @@ function createResumePdf() {
   pdf += `trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xrefStart}\n%%EOF\n`;
 
   fs.writeFileSync(path.join(__dirname, '..', 'Shivendra_Gupta_Resume.pdf'), Buffer.from(pdf, 'latin1'));
-  console.log('Shivendra_Gupta_Resume.pdf successfully generated!');
+  console.log('Shivendra_Gupta_Resume.pdf successfully generated from updated resume!');
 }
 
 createResumePdf();

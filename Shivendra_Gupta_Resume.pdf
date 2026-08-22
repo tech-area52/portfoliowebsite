@@ -9,169 +9,202 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 4978 >>
+<< /Length 3843 >>
 stream
 BT
-/F2 18 Tf
-50 790 Td
+0.08 0.08 0.12 rg
+/F2 20 Tf
+45 795 Td
 (SHIVENDRA GUPTA) Tj
--50 -790 Td
-/F1 10 Tf
-50 772 Td
-(Bhayander East, Thane, Maharashtra | +91 9372670012 | guptashivendra697@gmail.com) Tj
--50 -772 Td
-/F1 10 Tf
-50 758 Td
-(Languages: English, Hindi, Marathi | LinkedIn: shivendraguptatech | GitHub: tech-area52) Tj
--50 -758 Td
-/F1 8 Tf
-50 746 Td
-(------------------------------------------------------------------------------------------------------------------------------------------------) Tj
--50 -746 Td
-/F2 12 Tf
-50 732 Td
+ET
+BT
+0.2 0.2 0.25 rg
+/F1 9.5 Tf
+45 775 Td
+(Bhayander East, Thane, Maharashtra   |   +91 9372670012   |   guptashivendra697@gmail.com) Tj
+ET
+BT
+0.2 0.2 0.25 rg
+/F1 9.5 Tf
+45 760 Td
+(LinkedIn: shivendraguptatech   |   GitHub: tech-area52   |   Portfolio: tech-area52.vercel.app) Tj
+ET
+BT
+0.25 0.25 0.3 rg
+/F1 9.5 Tf
+45 745 Td
+(Languages: English, Hindi, Marathi) Tj
+ET
+q 0.8 0.8 0.85 RG 0.75 w 45 735 m 550 735 l S Q
+BT
+0.08 0.08 0.12 rg
+/F2 11 Tf
+45 720 Td
 (PROFESSIONAL SUMMARY) Tj
--50 -732 Td
-/F1 9.5 Tf
-50 718 Td
-(Bachelor of Computer Science graduate with hands-on experience in Java, Spring Boot, RESTful APIs, HTML, CSS, Bootstrap,) Tj
--50 -718 Td
-/F1 9.5 Tf
-50 706 Td
-(SQL, and MySQL. Experienced in application development, responsive UI development, database integration, and Git/GitHub-based) Tj
--50 -706 Td
-/F1 9.5 Tf
-50 694 Td
-(source control. Seeking an entry-level Software Developer role to build reliable applications and contribute to a development team.) Tj
--50 -694 Td
-/F1 8 Tf
-50 682 Td
-(------------------------------------------------------------------------------------------------------------------------------------------------) Tj
--50 -682 Td
-/F2 12 Tf
-50 668 Td
+ET
+BT
+0.2 0.2 0.2 rg
+/F1 9.2 Tf
+45 704 Td
+(Bachelor of Computer Science graduate with hands-on experience in Java, Spring Boot, RESTful APIs,) Tj
+ET
+BT
+0.2 0.2 0.2 rg
+/F1 9.2 Tf
+45 691 Td
+(HTML, CSS, Bootstrap, SQL, and MySQL. Experienced in application development, responsive UI) Tj
+ET
+BT
+0.2 0.2 0.2 rg
+/F1 9.2 Tf
+45 678 Td
+(development, database integration, and Git/GitHub-based source control. Seeking an entry-level Software) Tj
+ET
+BT
+0.2 0.2 0.2 rg
+/F1 9.2 Tf
+45 665 Td
+(Developer role to build reliable applications and contribute to a development team.) Tj
+ET
+q 0.8 0.8 0.85 RG 0.75 w 45 652 m 550 652 l S Q
+BT
+0.08 0.08 0.12 rg
+/F2 11 Tf
+45 637 Td
 (TECHNICAL SKILLS) Tj
--50 -668 Td
-/F1 9.5 Tf
-50 654 Td
-(" Programming: Java \(Core Java\), Python \(Basic\), JavaScript \(Basic\)) Tj
--50 -654 Td
-/F1 9.5 Tf
-50 642 Td
-(" Backend: Spring Boot, RESTful APIs, Spring MVC, Spring Data JPA, Hibernate, JDBC) Tj
--50 -642 Td
-/F1 9.5 Tf
-50 630 Td
-(" Frontend: HTML5, CSS3, Bootstrap, JavaScript) Tj
--50 -630 Td
-/F1 9.5 Tf
-50 618 Td
-(" Databases: MySQL, SQL, MongoDB \(Basic\)) Tj
--50 -618 Td
-/F1 9.5 Tf
-50 606 Td
-(" Tools: Git, GitHub, Postman, IntelliJ IDEA, Eclipse, MS Office, QGIS, SPSS, Canva) Tj
--50 -606 Td
-/F1 9.5 Tf
-50 594 Td
-(" Core Concepts: Object-Oriented Programming \(OOP\), MVC Architecture, CRUD Operations, DSA) Tj
--50 -594 Td
-/F1 8 Tf
-50 582 Td
-(------------------------------------------------------------------------------------------------------------------------------------------------) Tj
--50 -582 Td
-/F2 12 Tf
-50 568 Td
+ET
+BT
+0.15 0.15 0.15 rg
+/F2 9.2 Tf
+45 621 Td
+("  Programming: ) Tj
+/F1 9.2 Tf
+(Java \(Core Java\), Python \(Basic\), JavaScript \(Basic\)) Tj
+ET
+BT
+0.15 0.15 0.15 rg
+/F2 9.2 Tf
+45 607 Td
+("  Backend: ) Tj
+/F1 9.2 Tf
+(Spring Boot, RESTful APIs) Tj
+ET
+BT
+0.15 0.15 0.15 rg
+/F2 9.2 Tf
+45 593 Td
+("  Frontend: ) Tj
+/F1 9.2 Tf
+(HTML5, CSS, Bootstrap) Tj
+ET
+BT
+0.15 0.15 0.15 rg
+/F2 9.2 Tf
+45 579 Td
+("  Databases: ) Tj
+/F1 9.2 Tf
+(MySQL, SQL, MongoDB \(Basic\)) Tj
+ET
+BT
+0.15 0.15 0.15 rg
+/F2 9.2 Tf
+45 565 Td
+("  Tools: ) Tj
+/F1 9.2 Tf
+(Git, GitHub, MS Office, QGIS, SPSS, Canva) Tj
+ET
+q 0.8 0.8 0.85 RG 0.75 w 45 552 m 550 552 l S Q
+BT
+0.08 0.08 0.12 rg
+/F2 11 Tf
+45 537 Td
 (WORK EXPERIENCE) Tj
--50 -568 Td
-/F2 10.5 Tf
-50 554 Td
-(Software Development Intern | SDAC Infotech, Mumbai) Tj
--50 -554 Td
-/F1 9.5 Tf
-50 540 Td
-(" Assisted in developing hybrid applications integrated with Generative AI tools to improve user interactivity.) Tj
--50 -540 Td
-/F1 9.5 Tf
-50 528 Td
-(" Built responsive, multi-device user interfaces using HTML, CSS, Bootstrap, and Java.) Tj
--50 -528 Td
-/F1 9.5 Tf
-50 516 Td
-(" Worked with SQL and MySQL for relational database management, backend data retrieval, and integration.) Tj
--50 -516 Td
-/F1 9.5 Tf
-50 504 Td
-(" Used Git and GitHub for source code management, version tracking, and collaboration on code features.) Tj
--50 -504 Td
-/F1 8 Tf
-50 492 Td
-(------------------------------------------------------------------------------------------------------------------------------------------------) Tj
--50 -492 Td
-/F2 12 Tf
-50 478 Td
-(PROJECTS) Tj
--50 -478 Td
-/F2 10 Tf
-50 464 Td
-(Student Management System \(Spring Boot, Spring Data JPA, MySQL, REST API, Postman\)) Tj
--50 -464 Td
-/F1 9.5 Tf
-50 452 Td
-(" Built complete CRUD backend with Controller -> Service -> Repository -> Database layered architecture.) Tj
--50 -452 Td
-/F2 10 Tf
-50 438 Td
-(Nexus Finance API & Travelogue Portal \(Java, Spring Boot, MySQL, REST APIs, JS\)) Tj
--50 -438 Td
-/F1 9.5 Tf
-50 426 Td
-(" Engineered secure financial transaction endpoints and interactive multi-tier full-stack application.) Tj
--50 -426 Td
-/F1 8 Tf
-50 414 Td
-(------------------------------------------------------------------------------------------------------------------------------------------------) Tj
--50 -414 Td
-/F2 12 Tf
-50 400 Td
+ET
+BT
+0.1 0.1 0.15 rg
+/F2 9.8 Tf
+45 521 Td
+(Software Development Intern  |  SDAC Infotech, Mumbai) Tj
+ET
+BT
+0.2 0.2 0.2 rg
+/F1 9.2 Tf
+45 506 Td
+("  Assisted in developing hybrid applications integrated with Generative AI tools to improve user interactivity.) Tj
+ET
+BT
+0.2 0.2 0.2 rg
+/F1 9.2 Tf
+45 492 Td
+("  Built responsive, multi-device user interfaces using HTML, CSS, Bootstrap, and Java.) Tj
+ET
+BT
+0.2 0.2 0.2 rg
+/F1 9.2 Tf
+45 478 Td
+("  Worked with SQL and MySQL for relational database management, backend data retrieval, and integration.) Tj
+ET
+BT
+0.2 0.2 0.2 rg
+/F1 9.2 Tf
+45 464 Td
+("  Used Git and GitHub for source code management, version tracking, and collaboration on code features.) Tj
+ET
+q 0.8 0.8 0.85 RG 0.75 w 45 450 m 550 450 l S Q
+BT
+0.08 0.08 0.12 rg
+/F2 11 Tf
+45 435 Td
 (EDUCATION) Tj
--50 -400 Td
-/F1 9.5 Tf
-50 386 Td
-(" Bachelor of Computer Science \(B.Sc. CS\) | Thakur Ramnarayan College of Arts & Commerce \(Mumbai University\) - CGPA: 8.5 \(2026\)) Tj
--50 -386 Td
-/F1 9.5 Tf
-50 374 Td
-(" Higher Secondary Certificate \(HSC\) | Mother Mary Junior College of Arts, Science and Commerce - 54.46%) Tj
--50 -374 Td
-/F1 9.5 Tf
-50 362 Td
-(" Secondary School Certificate \(SSC\) | K.B. Narawat High School - 67.80%) Tj
--50 -362 Td
-/F1 8 Tf
-50 350 Td
-(------------------------------------------------------------------------------------------------------------------------------------------------) Tj
--50 -350 Td
-/F2 12 Tf
-50 336 Td
+ET
+BT
+0.12 0.12 0.15 rg
+/F2 9.2 Tf
+45 419 Td
+("  Bachelor of Computer Science  Thakur Ramnarayan College of Arts and Commerce  |  CGPA: 8.5) Tj
+ET
+BT
+0.2 0.2 0.2 rg
+/F1 9.2 Tf
+45 403 Td
+("  Higher Secondary Certificate \(HSC\)  Mother Mary Junior College of Arts, Science and Commerce  |  54.46%) Tj
+ET
+BT
+0.2 0.2 0.2 rg
+/F1 9.2 Tf
+45 387 Td
+("  Secondary School Certificate \(SSC\)  K.B. Narawat High School  |  67.80%) Tj
+ET
+q 0.8 0.8 0.85 RG 0.75 w 45 373 m 550 373 l S Q
+BT
+0.08 0.08 0.12 rg
+/F2 11 Tf
+45 358 Td
 (CERTIFICATIONS & TRAINING) Tj
--50 -336 Td
-/F2 9.5 Tf
-50 322 Td
-(" Android App Development using Kotlin  IIT Bombay \(20252026\)) Tj
--50 -322 Td
+ET
+BT
+0.12 0.12 0.15 rg
+/F2 9.2 Tf
+45 342 Td
+("  Campus to Corporate Career Training  TNS India Foundation) Tj
+ET
+BT
+0.3 0.3 0.3 rg
 /F1 9 Tf
-50 310 Td
-(  Learned core mobile application architecture and built native Android user interfaces using Kotlin.) Tj
--50 -310 Td
-/F2 9.5 Tf
-50 296 Td
-(" Campus to Corporate Career Training  TNS India Foundation) Tj
--50 -296 Td
+45 328 Td
+(   Training in business communication, corporate workplace dynamics, and professional effectiveness.) Tj
+ET
+BT
+0.12 0.12 0.15 rg
+/F2 9.2 Tf
+45 310 Td
+("  Android App Development using Kotlin  IIT Bombay \(20252026\)) Tj
+ET
+BT
+0.3 0.3 0.3 rg
 /F1 9 Tf
-50 284 Td
-(  Training in business communication, corporate workplace dynamics, and professional effectiveness.) Tj
--50 -284 Td
+45 296 Td
+(   Learned core mobile application architecture and built native Android user interfaces using Kotlin.) Tj
 ET
 
 endstream
@@ -189,10 +222,10 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000251 00000 n 
-0000005281 00000 n 
-0000005351 00000 n 
+0000004146 00000 n 
+0000004216 00000 n 
 trailer
 << /Size 7 /Root 1 0 R >>
 startxref
-5426
+4291
 %%EOF

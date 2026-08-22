@@ -21,17 +21,12 @@
     ],
     "backend": [
       "Spring Boot",
-      "RESTful APIs",
-      "Spring MVC",
-      "Spring Data JPA",
-      "Hibernate",
-      "JDBC"
+      "RESTful APIs"
     ],
     "frontend": [
       "HTML5",
-      "CSS3",
-      "Bootstrap",
-      "JavaScript"
+      "CSS",
+      "Bootstrap"
     ],
     "databases": [
       "MySQL",
@@ -41,53 +36,43 @@
     "tools": [
       "Git",
       "GitHub",
-      "Postman",
-      "IntelliJ IDEA",
-      "Eclipse",
       "MS Office",
       "QGIS",
       "SPSS",
       "Canva"
-    ],
-    "concepts": [
-      "Object-Oriented Programming (OOP)",
-      "MVC Architecture",
-      "CRUD Operations",
-      "Exception Handling",
-      "Data Structures and Algorithms (DSA)"
     ]
   },
   "skillsList": [
-    "Java",
+    "Java (Core Java)",
+    "Python (Basic)",
+    "JavaScript (Basic)",
     "Spring Boot",
-    "REST APIs",
+    "RESTful APIs",
+    "HTML5",
+    "CSS",
+    "Bootstrap",
     "MySQL",
     "SQL",
-    "Hibernate",
-    "Spring Data JPA",
-    "HTML5",
-    "CSS3",
-    "Bootstrap",
-    "JavaScript",
-    "Python",
-    "MongoDB",
+    "MongoDB (Basic)",
     "Git",
     "GitHub",
-    "Postman",
-    "Data Structures & Algorithms"
+    "MS Office",
+    "QGIS",
+    "SPSS",
+    "Canva"
   ],
   "currentlyLearning": [
     "Data Structures and Algorithms (DSA)",
     "Advanced Java & Spring Boot",
     "Spring Security",
     "Microservices Architecture",
-    "Cloud Deployment"
+    "Android App Development using Kotlin"
   ],
   "experience": [
     {
       "role": "Software Development Intern",
       "company": "SDAC Infotech",
-      "location": "Mumbai, India",
+      "location": "Mumbai",
       "responsibilities": [
         "Assisted in developing hybrid applications integrated with Generative AI tools to improve user interactivity.",
         "Built responsive, multi-device user interfaces using HTML, CSS, Bootstrap, and Java.",
@@ -98,11 +83,9 @@
   ],
   "education": [
     {
-      "degree": "Bachelor of Computer Science (B.Sc. CS)",
+      "degree": "Bachelor of Computer Science",
       "institution": "Thakur Ramnarayan College of Arts and Commerce",
-      "university": "Mumbai University",
-      "score": "CGPA: 8.5",
-      "graduationYear": 2026
+      "score": "CGPA: 8.5"
     },
     {
       "degree": "Higher Secondary Certificate (HSC)",
@@ -117,15 +100,15 @@
   ],
   "certificationsAndTraining": [
     {
+      "title": "Campus to Corporate Career Training",
+      "issuer": "TNS India Foundation",
+      "description": "Training in business communication, corporate workplace dynamics, and professional effectiveness."
+    },
+    {
       "title": "Android App Development using Kotlin",
       "issuer": "IIT Bombay",
       "period": "2025–2026",
       "description": "Learned core mobile application architecture and built native Android user interfaces using Kotlin."
-    },
-    {
-      "title": "Campus to Corporate Career Training",
-      "issuer": "TNS India Foundation",
-      "description": "Training in business communication, corporate workplace dynamics, and professional effectiveness."
     }
   ],
   "projects": [
