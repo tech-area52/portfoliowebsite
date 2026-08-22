@@ -1,6 +1,6 @@
 /**
- * Generates an exact, pixel-perfect 1-page PDF Resume matching Shivendra Gupta's original resume
- * Uses PDFKit for crisp typography, accurate vectors, clickable hyperlinks, and ATS-compatible formatting.
+ * Generates an exact, pixel-perfect 1-page PDF Resume matching Shivendra Gupta's Google Doc resume.
+ * Uses PDFKit with accurate typography, vector icons, hyperlinks, and ATS-friendly layout.
  */
 const fs = require('fs');
 const path = require('path');
@@ -9,28 +9,28 @@ const PDFDocument = require('pdfkit');
 function generatePixelPerfectResume() {
   const outputPath = path.join(__dirname, '..', 'Shivendra_Gupta_Resume.pdf');
   
-  // Create A4 document with 40pt margins
+  // Create A4 document with balanced margins
   const doc = new PDFDocument({
     size: 'A4', // 595.28 x 841.89 pt
-    margins: { top: 38, bottom: 38, left: 40, right: 40 },
+    margins: { top: 40, bottom: 40, left: 45, right: 45 },
     autoFirstPage: true,
     info: {
       Title: 'Shivendra Gupta - Resume',
       Author: 'Shivendra Gupta',
       Subject: 'Software Developer Resume',
-      Keywords: 'Java, Spring Boot, REST APIs, MySQL, Software Developer, Full-Stack'
+      Keywords: 'Java, Spring Boot, RESTful APIs, MySQL, Software Developer, Full-Stack'
     }
   });
 
   const writeStream = fs.createWriteStream(outputPath);
   doc.pipe(writeStream);
 
-  const contentWidth = 595.28 - 80; // 515.28 pt
-  const leftX = 40;
-  const rightX = 40 + contentWidth;
+  const leftX = 45;
+  const rightX = 550;
+  const contentWidth = rightX - leftX; // 505 pt
 
   // Helper: Draw clean horizontal rule
-  function drawDivider(y, color = '#6b7280', lineWidth = 0.6) {
+  function drawDivider(y, color = '#5c768d', lineWidth = 0.75) {
     doc.save()
        .strokeColor(color)
        .lineWidth(lineWidth)
@@ -40,59 +40,163 @@ function generatePixelPerfectResume() {
        .restore();
   }
 
+  // Vector Icon Helpers for Header
+  function drawPinIcon(x, y) {
+    doc.save()
+       .strokeColor('#dc2626')
+       .fillColor('#dc2626')
+       .circle(x + 4, y + 4, 3)
+       .fill()
+       .moveTo(x + 1.5, y + 5)
+       .lineTo(x + 4, y + 9)
+       .lineTo(x + 6.5, y + 5)
+       .fill()
+       .fillColor('#ffffff')
+       .circle(x + 4, y + 4, 1.2)
+       .fill()
+       .restore();
+  }
+
+  function drawPhoneIcon(x, y) {
+    doc.save()
+       .strokeColor('#1e293b')
+       .fillColor('#1e293b')
+       .roundedRect(x + 1, y + 1, 6.5, 9.5, 1.5)
+       .fill()
+       .fillColor('#ffffff')
+       .rect(x + 2, y + 2.5, 4.5, 6)
+       .fill()
+       .fillColor('#ffffff')
+       .circle(x + 4.25, y + 9.2, 0.6)
+       .fill()
+       .restore();
+  }
+
+  function drawMailIcon(x, y) {
+    doc.save()
+       .strokeColor('#2563eb')
+       .fillColor('#2563eb')
+       .roundedRect(x + 0.5, y + 1.5, 9, 7, 1)
+       .fill()
+       .strokeColor('#ffffff')
+       .lineWidth(0.8)
+       .moveTo(x + 1.5, y + 2.5)
+       .lineTo(x + 5, y + 5.2)
+       .lineTo(x + 8.5, y + 2.5)
+       .stroke()
+       .restore();
+  }
+
+  function drawBriefcaseIcon(x, y) {
+    doc.save()
+       .strokeColor('#0284c7')
+       .fillColor('#0284c7')
+       .roundedRect(x + 0.5, y + 2.5, 9, 6.5, 1)
+       .fill()
+       .strokeColor('#0284c7')
+       .lineWidth(0.8)
+       .moveTo(x + 3, y + 2.5)
+       .lineTo(x + 3, y + 1)
+       .lineTo(x + 7, y + 1)
+       .lineTo(x + 7, y + 2.5)
+       .stroke()
+       .restore();
+  }
+
+  function drawCodeIcon(x, y) {
+    doc.save()
+       .strokeColor('#334155')
+       .fillColor('#334155')
+       .roundedRect(x + 0.5, y + 1.5, 9, 6.5, 1)
+       .fill()
+       .strokeColor('#334155')
+       .lineWidth(1)
+       .moveTo(x + 0.5, y + 8.5)
+       .lineTo(x + 9.5, y + 8.5)
+       .stroke()
+       .restore();
+  }
+
+  function drawGlobeIcon(x, y) {
+    doc.save()
+       .strokeColor('#0d9488')
+       .lineWidth(0.8)
+       .circle(x + 4.5, y + 5, 4)
+       .stroke()
+       .moveTo(x + 0.5, y + 5)
+       .lineTo(x + 8.5, y + 5)
+       .stroke()
+       .ellipse(x + 4.5, y + 5, 2, 4)
+       .stroke()
+       .restore();
+  }
+
   // --- 1. HEADER ---
   doc.font('Helvetica-Bold')
      .fontSize(18)
      .fillColor('#000000')
-     .text('SHIVENDRA GUPTA', leftX, 38, { characterSpacing: 0.5 });
+     .text('SHIVENDRA GUPTA', leftX, 40, { characterSpacing: 0.5 });
 
   doc.moveDown(0.35);
 
   // Line 1: Location | Phone | Email
-  const currentY = doc.y;
+  let curY = doc.y;
+  drawPinIcon(leftX, curY);
+  
   doc.font('Helvetica')
      .fontSize(9.5)
-     .fillColor('#111827');
+     .fillColor('#000000')
+     .text('  Bhayander East, Thane, Maharashtra  |  ', leftX + 10, curY, { continued: true });
 
-  doc.text('Bhayander East, Thane, Maharashtra  |  +91 9372670012  |  ', leftX, currentY, { continued: true });
-  doc.fillColor('#1d4ed8')
-     .text('guptashivendra697@gmail.com', {
+  const phoneX = doc.x;
+  drawPhoneIcon(phoneX, curY);
+  doc.text('   +91 9372670012  |  ', phoneX + 11, curY, { continued: true });
+
+  const mailX = doc.x;
+  drawMailIcon(mailX, curY);
+  doc.fillColor('#1155cc')
+     .text('   guptashivendra697@gmail.com', mailX + 12, curY, {
        link: 'mailto:guptashivendra697@gmail.com',
        underline: true,
        continued: false
      });
 
-  doc.moveDown(0.2);
+  doc.moveDown(0.25);
+  drawDivider(doc.y, '#5c768d', 1.0);
+  doc.moveDown(0.3);
 
   // Line 2: LinkedIn | GitHub | Portfolio
-  const linksY = doc.y;
+  curY = doc.y;
+  drawBriefcaseIcon(leftX, curY);
   doc.font('Helvetica')
      .fontSize(9.5)
-     .fillColor('#1d4ed8')
-     .text('LinkedIn', leftX, linksY, { link: 'https://www.linkedin.com/in/shivendraguptatech', underline: true, continued: true });
+     .fillColor('#1155cc')
+     .text('  LinkedIn', leftX + 11, curY, { link: 'https://www.linkedin.com/in/shivendraguptatech', underline: true, continued: true });
   
-  doc.fillColor('#111827')
+  doc.fillColor('#000000')
      .text('  |  ', { underline: false, continued: true });
 
-  doc.fillColor('#1d4ed8')
-     .text('GitHub', { link: 'https://github.com/tech-area52', underline: true, continued: true });
+  const ghX = doc.x;
+  drawCodeIcon(ghX, curY);
+  doc.fillColor('#1155cc')
+     .text('   GitHub', ghX + 11, curY, { link: 'https://github.com/tech-area52', underline: true, continued: true });
 
-  doc.fillColor('#111827')
+  doc.fillColor('#000000')
      .text('  |  ', { underline: false, continued: true });
 
-  doc.fillColor('#1d4ed8')
-     .text('Portfolio', { link: 'https://tech-area52.vercel.app', underline: true, continued: false });
+  const portX = doc.x;
+  drawGlobeIcon(portX, curY);
+  doc.fillColor('#1155cc')
+     .text('   Portfolio', portX + 11, curY, { link: 'https://tech-area52.vercel.app', underline: true, continued: false });
 
-  doc.moveDown(0.2);
+  doc.moveDown(0.22);
 
   // Line 3: Languages
   doc.font('Helvetica')
      .fontSize(9.5)
-     .fillColor('#111827')
+     .fillColor('#000000')
      .text('Languages: English, Hindi, Marathi', leftX);
 
-  doc.moveDown(0.35);
-  drawDivider(doc.y, '#9ca3af', 0.65);
   doc.moveDown(0.45);
 
   // --- 2. PROFESSIONAL SUMMARY ---
@@ -101,13 +205,13 @@ function generatePixelPerfectResume() {
      .fillColor('#000000')
      .text('PROFESSIONAL SUMMARY', leftX);
 
-  doc.moveDown(0.15);
-  drawDivider(doc.y, '#9ca3af', 0.5);
+  doc.moveDown(0.12);
+  drawDivider(doc.y, '#5c768d', 0.65);
   doc.moveDown(0.35);
 
   doc.font('Helvetica')
      .fontSize(9.2)
-     .fillColor('#1f2937')
+     .fillColor('#000000')
      .text(
        'Bachelor of Computer Science graduate with hands-on experience in Java, Spring Boot, RESTful APIs, HTML, CSS, Bootstrap, SQL, and MySQL. Experienced in application development, responsive UI development, database integration, and Git/GitHub-based source control. Seeking an entry-level Software Developer role to build reliable applications and contribute to a development team.',
        leftX,
@@ -127,8 +231,8 @@ function generatePixelPerfectResume() {
      .fillColor('#000000')
      .text('TECHNICAL SKILLS', leftX);
 
-  doc.moveDown(0.15);
-  drawDivider(doc.y, '#9ca3af', 0.5);
+  doc.moveDown(0.12);
+  drawDivider(doc.y, '#5c768d', 0.65);
   doc.moveDown(0.35);
 
   const skills = [
@@ -144,12 +248,12 @@ function generatePixelPerfectResume() {
     doc.font('Helvetica-Bold')
        .fontSize(9.2)
        .fillColor('#000000')
-       .text('•  ', leftX + 8, y, { continued: true })
+       .text('●  ', leftX + 4, y, { continued: true })
        .text(s.label, { continued: true })
        .font('Helvetica')
-       .fillColor('#1f2937')
+       .fillColor('#000000')
        .text(s.val);
-    doc.moveDown(0.18);
+    doc.moveDown(0.2);
   });
 
   doc.moveDown(0.35);
@@ -160,8 +264,8 @@ function generatePixelPerfectResume() {
      .fillColor('#000000')
      .text('WORK EXPERIENCE', leftX);
 
-  doc.moveDown(0.15);
-  drawDivider(doc.y, '#9ca3af', 0.5);
+  doc.moveDown(0.12);
+  drawDivider(doc.y, '#5c768d', 0.65);
   doc.moveDown(0.35);
 
   doc.font('Helvetica-Bold')
@@ -183,11 +287,11 @@ function generatePixelPerfectResume() {
     doc.font('Helvetica-Bold')
        .fontSize(9.2)
        .fillColor('#000000')
-       .text('•  ', leftX + 8, y, { continued: true })
+       .text('●  ', leftX + 4, y, { continued: true })
        .font('Helvetica')
-       .fillColor('#1f2937')
+       .fillColor('#000000')
        .text(b, {
-         width: contentWidth - 18,
+         width: contentWidth - 14,
          lineGap: 1.8
        });
     doc.moveDown(0.2);
@@ -201,8 +305,8 @@ function generatePixelPerfectResume() {
      .fillColor('#000000')
      .text('EDUCATION', leftX);
 
-  doc.moveDown(0.15);
-  drawDivider(doc.y, '#9ca3af', 0.5);
+  doc.moveDown(0.12);
+  drawDivider(doc.y, '#5c768d', 0.65);
   doc.moveDown(0.35);
 
   // Edu 1: Bachelor of CS
@@ -210,42 +314,42 @@ function generatePixelPerfectResume() {
   doc.font('Helvetica-Bold')
      .fontSize(9.2)
      .fillColor('#000000')
-     .text('•  ', leftX + 8, eduY, { continued: true })
+     .text('●  ', leftX + 4, eduY, { continued: true })
      .text('Bachelor of Computer Science', { continued: true })
      .font('Helvetica')
-     .fillColor('#1f2937')
+     .fillColor('#000000')
      .text(' — Thakur Ramnarayan College of Arts and Commerce | ', { continued: true })
      .font('Helvetica-Bold')
      .fillColor('#000000')
      .text('CGPA: 8.5');
 
-  doc.moveDown(0.2);
+  doc.moveDown(0.22);
 
   // Edu 2: HSC
   eduY = doc.y;
   doc.font('Helvetica-Bold')
      .fontSize(9.2)
      .fillColor('#000000')
-     .text('•  ', leftX + 8, eduY, { continued: true })
+     .text('●  ', leftX + 4, eduY, { continued: true })
      .text('Higher Secondary Certificate (HSC)', { continued: true })
      .font('Helvetica')
-     .fillColor('#1f2937')
+     .fillColor('#000000')
      .text(' — Mother Mary Junior College of Arts, Science and Commerce | ', { continued: true })
      .font('Helvetica-Bold')
      .fillColor('#000000')
      .text('54.46%');
 
-  doc.moveDown(0.2);
+  doc.moveDown(0.22);
 
   // Edu 3: SSC
   eduY = doc.y;
   doc.font('Helvetica-Bold')
      .fontSize(9.2)
      .fillColor('#000000')
-     .text('•  ', leftX + 8, eduY, { continued: true })
+     .text('●  ', leftX + 4, eduY, { continued: true })
      .text('Secondary School Certificate (SSC)', { continued: true })
      .font('Helvetica')
-     .fillColor('#1f2937')
+     .fillColor('#000000')
      .text(' — K.B. Narawat High School | ', { continued: true })
      .font('Helvetica-Bold')
      .fillColor('#000000')
@@ -259,8 +363,8 @@ function generatePixelPerfectResume() {
      .fillColor('#000000')
      .text('CERTIFICATIONS & TRAINING', leftX);
 
-  doc.moveDown(0.15);
-  drawDivider(doc.y, '#9ca3af', 0.5);
+  doc.moveDown(0.12);
+  drawDivider(doc.y, '#5c768d', 0.65);
   doc.moveDown(0.35);
 
   // Cert 1: Campus to Corporate
@@ -268,40 +372,40 @@ function generatePixelPerfectResume() {
   doc.font('Helvetica-Bold')
      .fontSize(9.2)
      .fillColor('#000000')
-     .text('•  ', leftX + 8, certY, { continued: true })
+     .text('●  ', leftX + 4, certY, { continued: true })
      .text('Campus to Corporate Career Training', { continued: true })
      .font('Helvetica')
-     .fillColor('#1f2937')
+     .fillColor('#000000')
      .text(' — TNS India Foundation');
 
-  doc.moveDown(0.12);
+  doc.moveDown(0.15);
   doc.font('Helvetica')
      .fontSize(8.8)
-     .fillColor('#374151')
-     .text('Training in business communication, corporate workplace dynamics, and professional effectiveness.', leftX + 20, doc.y, {
-       width: contentWidth - 20,
+     .fillColor('#222222')
+     .text('Training in business communication, corporate workplace dynamics, and professional effectiveness.', leftX + 16, doc.y, {
+       width: contentWidth - 16,
        lineGap: 1.5
      });
 
-  doc.moveDown(0.25);
+  doc.moveDown(0.28);
 
   // Cert 2: Android App Development
   certY = doc.y;
   doc.font('Helvetica-Bold')
      .fontSize(9.2)
      .fillColor('#000000')
-     .text('•  ', leftX + 8, certY, { continued: true })
+     .text('●  ', leftX + 4, certY, { continued: true })
      .text('Android App Development using Kotlin', { continued: true })
      .font('Helvetica')
-     .fillColor('#1f2937')
+     .fillColor('#000000')
      .text(' — IIT Bombay (2025–2026)');
 
-  doc.moveDown(0.12);
+  doc.moveDown(0.15);
   doc.font('Helvetica')
      .fontSize(8.8)
-     .fillColor('#374151')
-     .text('Learned core mobile application architecture and built native Android user interfaces using Kotlin.', leftX + 20, doc.y, {
-       width: contentWidth - 20,
+     .fillColor('#222222')
+     .text('Learned core mobile application architecture and built native Android user interfaces using Kotlin.', leftX + 16, doc.y, {
+       width: contentWidth - 16,
        lineGap: 1.5
      });
 

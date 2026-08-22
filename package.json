@@ -4,7 +4,8 @@
   "private": true,
   "description": "Shivendra Gupta - Full-Stack Java Developer Portfolio",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build:pdf": "node data/generate-pdf.js"
   },
   "keywords": [],
   "author": "Shivendra Gupta",
